@@ -5,6 +5,7 @@ export const routesMeta = [
   { path: '/mixes', title: 'BSR Mixes — Curated sets & radio', description: 'Stream rotating resident mixes and guest features.' },
   { path: '/events', title: 'BSR Events — Club culture, reimagined', description: 'Find uplifting listening rooms and club takeovers.' },
   { path: '/submissions', title: 'Submit Your Demo — Bliss Sound Records', description: 'Send your melodic, hard, afro, or deep house demos to Bliss Sound.' },
+  { path: '/catalogue', title: 'BSR Catalogue — IDs & streaming links', description: 'Browse Bliss Sound catalogue IDs with quick jumps to DSPs.' },
   { path: '/about', title: 'About Bliss Sound Records', description: 'What drives the Bliss Sound aesthetic and curatorial approach.' },
   { path: '/contact', title: 'Contact Bliss Sound Records', description: 'Reach the label team for press, syncs, or partnerships.' },
   { path: '/press-kits', title: 'Press & Brand Assets — BSR', description: 'Access the Bliss Sound Records press kit and visuals.' },
@@ -35,6 +36,57 @@ export const eventList = [
 export const mixList = [
   { title: 'Pulse Bloom 021', curator: 'Lúmen', url: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3' },
   { title: 'Afterglow 004', curator: 'BSR Residents', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }
+];
+
+export const catalogueEntries = [
+  {
+    catalogId: 'BSR010',
+    title: 'Te Quero',
+    artist: 'Miss Bliss',
+    featuring: '—',
+    duration: '6:47',
+    links: {
+      spotify: 'https://open.spotify.com/track/0placeholder',
+      youtube: 'https://youtube.com/watch?v=0placeholder',
+      apple: 'https://music.apple.com/us/album/0placeholder'
+    }
+  },
+  {
+    catalogId: 'BSR011',
+    title: 'Drowning in the Dark',
+    artist: 'Miss Space',
+    featuring: '—',
+    duration: '7:05',
+    links: {
+      spotify: 'https://open.spotify.com/track/1placeholder',
+      youtube: 'https://youtube.com/watch?v=1placeholder',
+      apple: 'https://music.apple.com/us/album/1placeholder'
+    }
+  },
+  {
+    catalogId: 'BSR012',
+    title: 'Sapphire Drift',
+    artist: 'Miss Bliss',
+    featuring: 'Nova Aurelia',
+    duration: '5:58',
+    links: {
+      spotify: 'https://open.spotify.com/track/2placeholder',
+      youtube: 'https://youtube.com/watch?v=2placeholder',
+      apple: 'https://music.apple.com/us/album/2placeholder'
+    }
+  },
+  {
+    catalogId: 'BSR013',
+    title: 'Midnight Garden',
+    artist: 'Miss Space',
+    featuring: '—',
+    duration: '6:22',
+    links: {
+      spotify: 'https://open.spotify.com/track/3placeholder',
+      youtube: 'https://youtube.com/watch?v=3placeholder',
+      apple: 'https://music.apple.com/us/album/3placeholder'
+    }
+  }
 ];
 
 export const socials = {

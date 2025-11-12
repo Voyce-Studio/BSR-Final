@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import ScrollbarStyles from './components/ScrollbarStyles';
 import AppShell from './components/AppShell';
 import NeonWaveBackground from './components/NeonWaveBackground';
+import SiteChrome from './components/SiteChrome';
 
 export default function App() {
   const navRef = useRef(null);
@@ -15,9 +16,9 @@ export default function App() {
   return (
     <HelmetProvider>
       <ScrollbarStyles />
-      <div className="relative min-h-screen bg-gradient-to-b from-white via-white to-[#f3f4f6] text-white overflow-hidden scrollbar-minimal">
-        <NeonWaveBackground className="pointer-events-none opacity-90" />
-        <div className="relative z-10">
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-white to-[#f3f4f6] text-slate-900 scrollbar-minimal">
+        <NeonWaveBackground className="pointer-events-none absolute inset-0 opacity-60" />
+        <SiteChrome>
           <Navbar ref={navRef} />
           <ErrorBoundary>
             <AppShell className="pb-20">
@@ -29,7 +30,7 @@ export default function App() {
             </AppShell>
           </ErrorBoundary>
           <Footer />
-        </div>
+        </SiteChrome>
       </div>
     </HelmetProvider>
   );

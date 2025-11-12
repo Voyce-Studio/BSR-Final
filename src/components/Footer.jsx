@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linkedin, Youtube, Waves, Cloud } from 'lucide-react';
+import logoMark from '../assets/images/logo.svg';
 
 const socials = [
   { href: 'https://www.linkedin.com', label: 'LinkedIn', Icon: Linkedin },
@@ -15,7 +16,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <img
-              src="/logo.svg"
+              src={logoMark}
               alt="Bliss Sound Records"
               className="h-12 w-auto drop-shadow-[0_10px_25px_rgba(15,23,42,0.2)]"
             />

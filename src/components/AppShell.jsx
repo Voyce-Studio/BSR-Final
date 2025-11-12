@@ -7,8 +7,8 @@ import clsx from 'clsx';
  */
 export default function AppShell({ children, className }) {
   return (
-    <div className={clsx('min-h-[60vh] w-full', className)}>
+    <main className={clsx('flex-1 w-full', className)}>
       {children}
-    </div>
+    </main>
   );
 }

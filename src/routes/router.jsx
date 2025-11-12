@@ -9,6 +9,7 @@ const Events = React.lazy(() => import('../pages/Events.jsx'));
 const Mixes = React.lazy(() => import('../pages/Mixes.jsx'));
 const Submissions = React.lazy(() => import('../pages/Submissions.jsx'));
 const SubmissionsSuccess = React.lazy(() => import('../pages/SubmissionsSuccess.jsx'));
+const Catalogue = React.lazy(() => import('../pages/Catalogue.jsx'));
 const About = React.lazy(() => import('../pages/About.jsx'));
 const Contact = React.lazy(() => import('../pages/Contact.jsx'));
 const PressKits = React.lazy(() => import('../pages/PressKits.jsx'));
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: 'mixes', element: <Mixes /> },
       { path: 'submissions', element: <Submissions /> },
       { path: 'submissions/success', element: <SubmissionsSuccess /> },
+      { path: 'catalogue', element: <Catalogue /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'press-kits', element: <PressKits /> },
