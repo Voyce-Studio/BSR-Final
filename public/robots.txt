@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /server/
+Disallow: /server/uploads/
+
+Sitemap: https://www.blisssoundrecords.com/sitemap.xml

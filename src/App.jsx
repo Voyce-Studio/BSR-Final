@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useRef } from 'react';
+import { Outlet } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import RouteTransition from './components/RouteTransition';
+import ErrorBoundary from './components/ErrorBoundary';
+import ScrollbarStyles from './components/ScrollbarStyles';
+import AppShell from './components/AppShell';
+import NeonWaveBackground from './components/NeonWaveBackground';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const navRef = useRef(null);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <HelmetProvider>
+      <ScrollbarStyles />
+      <div className="relative min-h-screen bg-gradient-to-b from-white via-white to-[#f3f4f6] text-white overflow-hidden scrollbar-minimal">
+        <NeonWaveBackground className="pointer-events-none opacity-90" />
+        <div className="relative z-10">
+          <Navbar ref={navRef} />
+          <ErrorBoundary>
+            <AppShell className="pb-20">
+              <RouteTransition onTransition={() => navRef.current?.triggerGlisten?.()}>
+                <React.Suspense fallback={<div className="container py-20">Loading…</div>}>
+                  <Outlet />
+                </React.Suspense>
+              </RouteTransition>
+            </AppShell>
+          </ErrorBoundary>
+          <Footer />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </HelmetProvider>
+  );
 }
-
-export default App

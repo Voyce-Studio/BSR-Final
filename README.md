@@ -1,16 +1,49 @@
-# React + Vite
+# Bliss Sound Records SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single-page React + Vite experience with animated gradients, frosted glass UI, and Hostinger-ready server hooks.
 
-Currently, two official plugins are available:
+## Asset placeholders
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Every image call-site renders through `ImageSurface`, which shows an animated gradient until the referenced file exists.
+- Labels inside each gradient tell you where to drop the actual asset (e.g., `src/assets/images/hero.webp` for the hero, `src/assets/images/parallax-1.webp` for long textures, release art paths from `featuredReleases` constants).
+- Swap the gradient with your imagery by placing the real files at the hinted paths; they will fade in automatically.
 
-## React Compiler
+## Logos & favicons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Navbar uses `/public/logo.svg`.
+- Favicon + Apple icon use `/public/BSR.svg`. Replace the placeholder SVG if you have an updated mark. Tab color is set to black via `<meta name="theme-color" content="#000000">`.
 
-## Expanding the ESLint configuration
+## PHP upload limits on Hostinger
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The demo intake (`server/submit_demo.php`) accepts WAV uploads up to 300 MB. On Hostinger:
+
+1. In hPanel go to **Advanced → PHP Configuration → PHP Options** and set:
+   - `upload_max_filesize = 300M`
+   - `post_max_size = 310M`
+   - `max_execution_time = 120`
+2. If you need per-site overrides, add to `.htaccess` (outside `/public`) or a custom `php.ini` placed next to `submit_demo.php`:
+
+```
+php_value upload_max_filesize 300M
+php_value post_max_size 310M
+php_value max_execution_time 120
+```
+
+3. Ensure `/server/uploads` stays writable and protected (`server/uploads/.htaccess` already blocks direct execution).
+
+## Scripts
+
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Vite dev server |
+| `npm run build` | Production build + sitemap generation |
+| `npm run sitemap` | Regenerate `public/sitemap.xml` |
+| `npm run lint` | ESLint across `src` |
+
+## Deploy checklist
+
+1. Drop final imagery into the paths referenced by each `ImageSurface` label.
+2. Replace `/public/BSR.svg` with your real white logomark if needed.
+3. Update the discography artwork placeholders located under `/public/artwork/miss-bliss/te-quero.png` and `/public/artwork/miss-space/drowning-in-the-dark.png` (3000×3000 PNG).
+4. Configure PHP limits (above) and point submissions endpoint to a mailbox you monitor.
+5. Upload `/public/.htaccess`, `/public/robots.txt`, thank-you pages, and `/public/sitemap.xml` to Hostinger for SPA routing + SEO.

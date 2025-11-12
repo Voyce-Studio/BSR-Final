@@ -1,0 +1,45 @@
+export const routesMeta = [
+  { path: '/', title: 'Bliss Sound Records — Techno & House with an angelic vibe', description: 'A boutique label for melodic techno, hard techno, afro-house and deep house.' },
+  { path: '/releases', title: 'BSR Releases — Melodic Techno, Hard Techno, Afro-House, Deep House', description: 'Explore curated releases built for dance floors and celestial rooms.' },
+  { path: '/artists', title: 'BSR Artists — New voices in electronic music', description: 'Meet the Bliss Sound roster pushing club culture forward.' },
+  { path: '/mixes', title: 'BSR Mixes — Curated sets & radio', description: 'Stream rotating resident mixes and guest features.' },
+  { path: '/events', title: 'BSR Events — Club culture, reimagined', description: 'Find uplifting listening rooms and club takeovers.' },
+  { path: '/submissions', title: 'Submit Your Demo — Bliss Sound Records', description: 'Send your melodic, hard, afro, or deep house demos to Bliss Sound.' },
+  { path: '/about', title: 'About Bliss Sound Records', description: 'What drives the Bliss Sound aesthetic and curatorial approach.' },
+  { path: '/contact', title: 'Contact Bliss Sound Records', description: 'Reach the label team for press, syncs, or partnerships.' },
+  { path: '/press-kits', title: 'Press & Brand Assets — BSR', description: 'Access the Bliss Sound Records press kit and visuals.' },
+  { path: '/collaborate', title: 'Collaborate with BSR — Industry & Partners', description: 'Request collaborations, remixes, or joint events.' },
+  { path: '/newsletter', title: 'Subscribe — Bliss Sound Records', description: 'Join the monthly Bliss Sound signal for premieres and stories.' },
+  { path: '/legal/privacy', title: 'Privacy — Bliss Sound Records', description: 'Privacy commitments for submissions and contact forms.' },
+  { path: '/legal/terms', title: 'Terms — Bliss Sound Records', description: 'Usage terms for the Bliss Sound Records website.' }
+];
+
+export const featuredReleases = [
+  { id: 'release-1', title: 'Silver Halo', artists: 'Mira Lúmen', date: 'Oct 2024', formats: ['Digital', '12"'], cover: '/assets/images/release-1.webp' },
+  { id: 'release-2', title: 'Garden of Phase', artists: 'Tari Bloom', date: 'Jul 2024', formats: ['Digital'], cover: '/assets/images/release-2.webp' },
+  { id: 'release-3', title: 'High Tide Choir', artists: 'MOONLOX', date: 'Jan 2025', formats: ['Digital'], cover: '/assets/images/release-3.webp' }
+];
+
+export const artistList = [
+  { slug: 'mira-lumen', name: 'Mira Lúmen', style: 'Melodic Techno' },
+  { slug: 'tari-bloom', name: 'Tari Bloom', style: 'Afro-House' },
+  { slug: 'moonlox', name: 'MOONLOX', style: 'Hard Techno' }
+];
+
+export const eventList = [
+  { name: 'Aurora Club Takeover', date: 'Feb 22 · Berlin', status: 'Upcoming' },
+  { name: 'Skyline Listening Room', date: 'Mar 14 · Mexico City', status: 'Upcoming' },
+  { name: 'Afterglow Pop-up', date: 'Apr 06 · Lisbon', status: 'Upcoming' }
+];
+
+export const mixList = [
+  { title: 'Pulse Bloom 021', curator: 'Lúmen', url: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3' },
+  { title: 'Afterglow 004', curator: 'BSR Residents', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }
+];
+
+export const socials = {
+  linkedin: 'https://www.linkedin.com',
+  soundcloud: 'https://soundcloud.com',
+  youtube: 'https://www.youtube.com',
+  beatport: 'https://www.beatport.com'
+};
