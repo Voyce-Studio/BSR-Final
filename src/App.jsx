@@ -16,9 +16,9 @@ export default function App() {
   return (
     <HelmetProvider>
       <ScrollbarStyles />
-      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-white to-[#f3f4f6] text-slate-900 scrollbar-minimal">
-        <NeonWaveBackground className="pointer-events-none absolute inset-0 opacity-60" />
-        <SiteChrome>
+      <div className="relative min-h-screen overflow-hidden bg-black text-white scrollbar-minimal">
+        <NeonWaveBackground className="pointer-events-none absolute inset-0 opacity-20" />
+        <SiteChrome className="text-white">
           <Navbar ref={navRef} />
           <ErrorBoundary>
             <AppShell className="pb-20">

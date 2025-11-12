@@ -40,7 +40,7 @@ export const mixList = [
 
 export const catalogueEntries = [
   {
-    catalogId: 'BSR010',
+    catalogId: 'BRC001',
     title: 'Te Quero',
     artist: 'Miss Bliss',
     featuring: '—',
@@ -52,7 +52,7 @@ export const catalogueEntries = [
     }
   },
   {
-    catalogId: 'BSR011',
+    catalogId: 'BRC002',
     title: 'Drowning in the Dark',
     artist: 'Miss Space',
     featuring: '—',
@@ -64,7 +64,7 @@ export const catalogueEntries = [
     }
   },
   {
-    catalogId: 'BSR012',
+    catalogId: 'BRC003',
     title: 'Sapphire Drift',
     artist: 'Miss Bliss',
     featuring: 'Nova Aurelia',
@@ -76,7 +76,7 @@ export const catalogueEntries = [
     }
   },
   {
-    catalogId: 'BSR013',
+    catalogId: 'BRC004',
     title: 'Midnight Garden',
     artist: 'Miss Space',
     featuring: '—',

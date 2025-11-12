@@ -1,6 +1,8 @@
 import React from 'react';
 import SEO from '../components/SEO';
 import CelestialHero from '../components/CelestialHero';
+import galleryOne from '../assets/images/arty-backgrounds/BSR 1.png';
+import galleryTwo from '../assets/images/arty-backgrounds/BSR 2.png';
 
 const comingArtists = [
   { name: 'Miss Bliss', hue: 'from-[#fbd3ff] to-[#ff8ef3]', track: 'Te Quero', note: 'velvet bloom' },
@@ -26,6 +28,13 @@ const discography = [
   }
 ];
 
+const galleryShots = [
+  { src: galleryOne, caption: 'Club bloom', span: 'md:row-span-2' },
+  { src: galleryTwo, caption: 'Archive still', span: '' },
+  { src: galleryOne, caption: 'Analog halo', span: '' },
+  { src: galleryTwo, caption: 'After-hours bloom', span: 'md:col-span-2' }
+];
+
 export default function Home() {
   return (
     <>
@@ -37,8 +46,7 @@ export default function Home() {
         <CelestialHero />
         <section className="container space-y-10 pb-4">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.5em] text-slate-500">
-            <span>coming soon</span>
-            <span>miss bliss · miss space</span>
+            <span>texture over talk · angelic bloom — coming soon</span>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {comingArtists.map((artist) => (
@@ -75,8 +83,8 @@ export default function Home() {
                 key={entry.catalog}
                 className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_20px_45px_rgba(15,23,42,0.12)]"
               >
-                <div className="aspect-square w-full overflow-hidden">
-                  <img src={entry.artwork} alt={`${entry.title} artwork`} className="h-full w-full object-cover" />
+                <div className="w-full overflow-hidden rounded-3xl">
+                  <img src={entry.artwork} alt={`${entry.title} artwork`} className="h-56 w-full object-cover" />
                 </div>
                 <div className="space-y-4 p-6">
                   <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-slate-500">
@@ -90,6 +98,25 @@ export default function Home() {
                   <p className="text-slate-600">{entry.copy}</p>
                 </div>
               </article>
+            ))}
+          </div>
+        </section>
+        <section className="container space-y-6 pb-24">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-slate-500">Visual diary</p>
+            <h2 className="text-3xl font-semibold text-slate-900">After-hours stills</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3 auto-rows-[220px]">
+            {galleryShots.map((shot, index) => (
+              <figure
+                key={`${shot.caption}-${index}`}
+                className={`relative overflow-hidden rounded-[32px] border border-slate-200 bg-black/5 ${shot.span}`}
+              >
+                <img src={shot.src} alt={shot.caption} className="h-full w-full object-cover" />
+                <figcaption className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 text-sm uppercase tracking-[0.3em] text-white/80">
+                  {shot.caption}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </section>

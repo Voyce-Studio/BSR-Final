@@ -9,7 +9,8 @@ const links = [
   { to: '/artists', label: 'Artists' },
   { to: '/events', label: 'Events' },
   { to: '/mixes', label: 'Mixes' },
-  { to: '/submissions', label: 'Submissions' }
+  { to: '/submissions', label: 'Submissions' },
+  { to: '/contact', label: 'Contact' }
 ];
 
 const colorCycles = [

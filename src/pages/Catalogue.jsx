@@ -3,19 +3,7 @@ import { Youtube, Apple } from 'lucide-react';
 import SectionFrame from '../components/SectionFrame';
 import SEO from '../components/SEO';
 import { catalogueEntries } from '../utils/constants';
-
-const SpotifyGlyph = ({ size = 18, ...props }) => (
-  <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" {...props}>
-    <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="1.5" fill="none" />
-    <path
-      d="M7.5 9.5c3.2-1 6.8-0.7 9.7 0.8M8 12.5c2.6-0.7 5.3-0.4 7.7 0.7M8.5 15.2c1.7-0.4 3.4-0.2 5 0.5"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      fill="none"
-    />
-  </svg>
-);
+import SpotifyGlyph from '../components/icons/SpotifyGlyph';
 
 const iconConfig = [
   { key: 'spotify', Icon: SpotifyGlyph, label: 'Spotify' },
