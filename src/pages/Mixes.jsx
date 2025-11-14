@@ -1,7 +1,7 @@
 import React from 'react';
-import SectionFrame from '../components/SectionFrame';
+import SectionFrame from '../components/primitives/SectionFrame';
 import MixesGrid from '../features/mixes/MixesGrid';
-import SEO from '../components/SEO';
+import SEO from '../components/meta/SEO';
 import { mixList } from '../utils/constants';
 
 export default function Mixes() {

@@ -1,7 +1,7 @@
 import React from 'react';
-import SectionFrame from '../components/SectionFrame';
-import SEO from '../components/SEO';
-import FrostCard from '../components/FrostCard';
+import SectionFrame from '../components/primitives/SectionFrame';
+import SEO from '../components/meta/SEO';
+import FrostCard from '../components/primitives/FrostCard';
 
 const assets = [
   { name: 'Logo SVG', href: '/assets/icons/bsr-logo.svg' },

@@ -1,6 +1,6 @@
 import React from 'react';
-import SectionFrame from '../components/SectionFrame';
-import SEO from '../components/SEO';
+import SectionFrame from '../components/primitives/SectionFrame';
+import SEO from '../components/meta/SEO';
 
 export default function LegalPrivacy() {
   return (

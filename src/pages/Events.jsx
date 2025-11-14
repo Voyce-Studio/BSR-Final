@@ -1,7 +1,7 @@
 import React from 'react';
-import SectionFrame from '../components/SectionFrame';
+import SectionFrame from '../components/primitives/SectionFrame';
 import EventsList from '../features/events/EventsList';
-import SEO from '../components/SEO';
+import SEO from '../components/meta/SEO';
 import { eventList } from '../utils/constants';
 
 export default function Events() {

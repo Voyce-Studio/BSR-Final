@@ -1,6 +1,6 @@
 import React from 'react';
-import FrostCard from '../../components/FrostCard';
-import SpotifyEmbed from '../../components/SpotifyEmbed';
+import FrostCard from '../../components/primitives/FrostCard';
+import SpotifyEmbed from '../../components/primitives/SpotifyEmbed';
 
 const YOUTUBE_DOMAINS = ['youtube.com', 'youtu.be'];
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import FrostCard from '../../components/FrostCard';
-import ImageSurface from '../../components/ImageSurface';
+import FrostCard from '../../components/primitives/FrostCard';
+import ImageSurface from '../../components/primitives/ImageSurface';
 
 export default function ReleaseCard({ release }) {
   return (

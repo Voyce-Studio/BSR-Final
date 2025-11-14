@@ -22,9 +22,36 @@ export const featuredReleases = [
 ];
 
 export const artistList = [
-  { slug: 'mira-lumen', name: 'Mira Lúmen', style: 'Melodic Techno' },
-  { slug: 'tari-bloom', name: 'Tari Bloom', style: 'Afro-House' },
-  { slug: 'moonlox', name: 'MOONLOX', style: 'Hard Techno' }
+  {
+    slug: 'miss-bliss',
+    name: 'Miss Bliss',
+    style: 'Blooming House',
+    summary: 'Velvet pulses, analog haze, whispered falsetto loops drifting over warm shimmer percussion.',
+    focus: 'Te Quero · warm shimmer',
+    status: 'Resident',
+    spotify: 'https://open.spotify.com/track/0placeholder',
+    palette: { glow: 'rgba(255,158,243,0.4)', accent: '#ff8ef3' }
+  },
+  {
+    slug: 'miss-space',
+    name: 'Miss Space',
+    style: 'Textured Techno',
+    summary: 'Chrome tide arps, midnight pads, and drum programming built for lunar dance floors.',
+    focus: 'Drowning in the Dark · chrome hush',
+    status: 'Resident',
+    spotify: 'https://open.spotify.com/track/1placeholder',
+    palette: { glow: 'rgba(92,184,255,0.35)', accent: '#5cb8ff' }
+  },
+  {
+    slug: 'more-coming',
+    name: 'More coming soon',
+    style: 'Future roster',
+    summary: 'Space reserved for the next Bliss Sound texture. Demos welcome—soft light, deep resonance.',
+    focus: 'Send your demo · angelic bloom',
+    status: 'Incoming',
+    spotify: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3',
+    palette: { glow: 'rgba(255,209,160,0.35)', accent: '#ffd199' }
+  }
 ];
 
 export const eventList = [

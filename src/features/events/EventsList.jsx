@@ -1,5 +1,5 @@
 import React from 'react';
-import FrostCard from '../../components/FrostCard';
+import FrostCard from '../../components/primitives/FrostCard';
 
 export default function EventsList({ events }) {
   return (

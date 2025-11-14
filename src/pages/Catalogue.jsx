@@ -1,7 +1,7 @@
 import React from 'react';
 import { Youtube, Apple } from 'lucide-react';
-import SectionFrame from '../components/SectionFrame';
-import SEO from '../components/SEO';
+import SectionFrame from '../components/primitives/SectionFrame';
+import SEO from '../components/meta/SEO';
 import { catalogueEntries } from '../utils/constants';
 import SpotifyGlyph from '../components/icons/SpotifyGlyph';
 

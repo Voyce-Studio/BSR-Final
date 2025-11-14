@@ -1,6 +1,6 @@
 import React from 'react';
-import SpotifyEmbed from '../../components/SpotifyEmbed';
-import FrostCard from '../../components/FrostCard';
+import SpotifyEmbed from '../../components/primitives/SpotifyEmbed';
+import FrostCard from '../../components/primitives/FrostCard';
 
 export default function ArtistDetail({ artist }) {
   if (!artist) return null;

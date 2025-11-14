@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
-import FrostCard from '../../components/FrostCard';
+import FrostCard from '../../components/primitives/FrostCard';
 import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({

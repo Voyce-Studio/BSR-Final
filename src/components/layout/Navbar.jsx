@@ -2,7 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef, useState, useEffect } f
 import { NavLink, Link } from 'react-router-dom';
 import { motion, useAnimationControls, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
-import logoMark from '../assets/images/logo.svg';
+import logoMark from '../../assets/images/logo.svg';
 
 const links = [
   { to: '/releases', label: 'Releases' },
@@ -64,16 +64,17 @@ const Navbar = forwardRef(function Navbar(_, ref) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 px-4 pt-4">
-        <nav
-          className={clsx(
-            'relative mx-auto flex max-w-5xl items-center justify-between gap-6 overflow-hidden rounded-2xl border px-6 py-3 shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-500',
-            isNavHovered ? 'border-white/15 bg-slate-950/75 text-white' : 'border-white/10 bg-slate-900/50 text-white/90'
-          )}
-          onMouseEnter={() => setIsNavHovered(true)}
-          onMouseLeave={() => setIsNavHovered(false)}
-          onMouseMove={handleNavMouseMove}
-        >
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+        <div className="px-4 pt-4">
+          <nav
+            className={clsx(
+              'pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-6 overflow-hidden rounded-2xl border px-6 py-3 shadow-[0_25px_60px_rgba(0,0,0,0.55)] backdrop-blur-2xl transition-all duration-500',
+              isNavHovered ? 'border-white/20 bg-slate-950/80 text-white' : 'border-white/10 bg-slate-900/60 text-white/90'
+            )}
+            onMouseEnter={() => setIsNavHovered(true)}
+            onMouseLeave={() => setIsNavHovered(false)}
+            onMouseMove={handleNavMouseMove}
+          >
           <span
             className="pointer-events-none absolute inset-0 transition-opacity duration-500"
             style={{
@@ -124,19 +125,21 @@ const Navbar = forwardRef(function Navbar(_, ref) {
               </NavLink>
             ))}
           </div>
-          <button
-            type="button"
-            className={clsx(
-              'lg:hidden rounded-full border px-5 py-2 uppercase text-xs tracking-[0.3em] transition-colors',
-              isNavHovered ? 'border-white text-white' : 'border-slate-300 text-slate-700'
-            )}
-            onClick={() => setIsMenuOpen((v) => !v)}
-            aria-expanded={isMenuOpen}
-          >
-            Menu
-          </button>
-        </nav>
+            <button
+              type="button"
+              className={clsx(
+                'lg:hidden rounded-full border px-5 py-2 uppercase text-xs tracking-[0.3em] transition-colors',
+                isNavHovered ? 'border-white text-white' : 'border-slate-300 text-slate-700'
+              )}
+              onClick={() => setIsMenuOpen((v) => !v)}
+              aria-expanded={isMenuOpen}
+            >
+              Menu
+            </button>
+          </nav>
+        </div>
       </header>
+      <div aria-hidden className="h-24 sm:h-28" />
 
       <AnimatePresence>
         {isMenuOpen && (

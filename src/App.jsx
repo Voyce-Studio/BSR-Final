@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
-import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import RouteTransition from './components/RouteTransition';
-import ErrorBoundary from './components/ErrorBoundary';
-import ScrollbarStyles from './components/ScrollbarStyles';
-import AppShell from './components/AppShell';
-import NeonWaveBackground from './components/NeonWaveBackground';
-import SiteChrome from './components/SiteChrome';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import RouteTransition from './components/transitions/RouteTransition';
+import ErrorBoundary from './components/layout/ErrorBoundary';
+import ScrollbarStyles from './components/layout/ScrollbarStyles';
+import AppShell from './components/layout/AppShell';
+import NeonWaveBackground from './components/visuals/NeonWaveBackground';
+import SiteChrome from './components/layout/SiteChrome';
 
 export default function App() {
   const navRef = useRef(null);
@@ -22,11 +21,7 @@ export default function App() {
           <Navbar ref={navRef} />
           <ErrorBoundary>
             <AppShell className="pb-20">
-              <RouteTransition onTransition={() => navRef.current?.triggerGlisten?.()}>
-                <React.Suspense fallback={<div className="container py-20">Loading…</div>}>
-                  <Outlet />
-                </React.Suspense>
-              </RouteTransition>
+              <RouteTransition onTransition={() => navRef.current?.triggerGlisten?.()} />
             </AppShell>
           </ErrorBoundary>
           <Footer />

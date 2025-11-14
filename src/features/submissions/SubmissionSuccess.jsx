@@ -1,5 +1,5 @@
 import React from 'react';
-import FrostCard from '../../components/FrostCard';
+import FrostCard from '../../components/primitives/FrostCard';
 import { Link } from 'react-router-dom';
 
 export default function SubmissionSuccess() {

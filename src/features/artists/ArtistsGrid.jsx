@@ -1,6 +1,6 @@
 import React from 'react';
 import ArtistCard from './ArtistCard';
-import FrostCard from '../../components/FrostCard';
+import FrostCard from '../../components/primitives/FrostCard';
 
 export default function ArtistsGrid({ artists, active, onSelect }) {
   return (

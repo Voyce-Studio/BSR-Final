@@ -1,7 +1,7 @@
 import React from 'react';
-import SectionFrame from '../components/SectionFrame';
+import SectionFrame from '../components/primitives/SectionFrame';
 import SubmissionForm from '../features/submissions/SubmissionForm';
-import SEO from '../components/SEO';
+import SEO from '../components/meta/SEO';
 
 export default function Submissions() {
   return (
