@@ -94,16 +94,24 @@ export default function Artists() {
             background: `linear-gradient(120deg, rgba(0,0,0,0.8), ${selected.palette?.glow ?? 'rgba(255,255,255,0.1)'})`
           }}
         />
-        <div className="container relative grid gap-10 py-20 text-white lg:grid-cols-[1.1fr,0.9fr]">
+        <div className="container relative grid gap-10 py-20 text-white lg:grid-cols-[1.2fr,0.8fr]">
           <div className="space-y-5">
             <p className="text-xs uppercase tracking-[0.4em] text-white/70">Spotlight</p>
             <h2 className="text-4xl font-semibold">{selected.name}</h2>
+            {selected.image && (
+              <div className="overflow-hidden rounded-[32px] border border-white/15">
+                <img src={selected.image} alt={`${selected.name} profile`} className="h-64 w-full object-cover" />
+              </div>
+            )}
             <p className="text-base text-white/80">{selected.summary}</p>
             <div className="flex flex-wrap gap-4 text-[0.65rem] uppercase tracking-[0.4em] text-white/70">
               <span className="rounded-full border border-white/30 px-4 py-2">{selected.style}</span>
               <span className="rounded-full border border-white/30 px-4 py-2">{selected.focus}</span>
               <span className="rounded-full border border-white/30 px-4 py-2">{selected.status}</span>
             </div>
+            {selected.festivalReady && (
+              <p className="text-sm text-white/70">Festival readiness: {selected.festivalReady}</p>
+            )}
           </div>
           <div className="rounded-[32px] border border-white/15 bg-black/40 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
             <p className="text-xs uppercase tracking-[0.4em] text-white/60">Listen</p>

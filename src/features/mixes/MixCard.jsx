@@ -1,57 +1,24 @@
 import React from 'react';
-import FrostCard from '../../components/primitives/FrostCard';
-import SpotifyEmbed from '../../components/primitives/SpotifyEmbed';
 
-const YOUTUBE_DOMAINS = ['youtube.com', 'youtu.be'];
-
-function getYouTubeEmbedUrl(url) {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname.includes('youtu.be')) {
-      return `https://www.youtube.com/embed/${parsed.pathname.slice(1)}`;
-    }
-    if (parsed.searchParams.get('v')) {
-      return `https://www.youtube.com/embed/${parsed.searchParams.get('v')}`;
-    }
-    if (parsed.pathname.startsWith('/embed/')) {
-      return `https://www.youtube.com${parsed.pathname}`;
-    }
-  } catch (err) {
-    return null;
-  }
-  return null;
-}
-
-function MixEmbed({ url }) {
-  if (YOUTUBE_DOMAINS.some((domain) => url.includes(domain))) {
-    const embedUrl = getYouTubeEmbedUrl(url);
-    if (!embedUrl) return null;
-    return (
-      <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 bg-black/5">
-        <iframe
-          src={embedUrl}
-          title="YouTube mix"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="h-full w-full"
-        />
-      </div>
-    );
-  }
-  return <SpotifyEmbed url={url} />;
-}
-
-export default function MixCard({ mix }) {
+export default function MixCard({ mix, isActive, onSelect }) {
   return (
-    <FrostCard className="space-y-3">
-      <div className="flex items-center justify-between">
+    <button
+      type="button"
+      onClick={onSelect}
+      className={`rounded-3xl border px-4 py-3 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-bsr-blue ${
+        isActive ? 'border-black bg-black text-white' : 'border-black/10 bg-white/70 text-black'
+      }`}
+      aria-pressed={isActive}
+    >
+      <p className={`text-xs uppercase tracking-[0.3em] ${isActive ? 'text-white/70' : 'text-black/60'}`}>{mix.curator}</p>
+      <div className="mt-2 flex items-center justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/60">{mix.curator}</p>
-          <h3 className="text-xl font-semibold">{mix.title}</h3>
+          <h3 className="text-lg font-semibold">{mix.title}</h3>
+          {mix.artist && <p className={`text-xs uppercase tracking-[0.3em] ${isActive ? 'text-white/60' : 'text-black/40'}`}>{mix.artist}</p>}
+          {mix.description && <p className={`text-sm ${isActive ? 'text-white/80' : 'text-black/60'}`}>{mix.description}</p>}
         </div>
+        <span className="text-[0.6rem] uppercase tracking-[0.3em]">{mix.platform}</span>
       </div>
-      <MixEmbed url={mix.url} />
-    </FrostCard>
+    </button>
   );
 }

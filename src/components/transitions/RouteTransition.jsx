@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom';
 
 export default function RouteTransition({ onTransition }) {
   const location = useLocation();
+  const outlet = useOutlet();
 
   const variants = {
     initial: { opacity: 0, y: 24, filter: 'blur(18px)' },
@@ -37,7 +38,7 @@ export default function RouteTransition({ onTransition }) {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
-        key={location.key}
+        key={location.pathname}
         variants={variants}
         initial="initial"
         animate="animate"
@@ -63,7 +64,7 @@ export default function RouteTransition({ onTransition }) {
           />
           <div className="relative z-10">
             <React.Suspense fallback={<div className="container py-20">Loading…</div>}>
-              <Outlet />
+              {outlet}
             </React.Suspense>
           </div>
         </div>

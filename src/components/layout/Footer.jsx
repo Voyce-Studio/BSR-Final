@@ -23,12 +23,12 @@ export default function Footer() {
             aria-label="Return to Bliss Sound Records home"
           >
             <span
-              className="block h-12 w-20 overflow-hidden"
+              className="block h-20 w-40 overflow-hidden"
               style={{ WebkitMaskImage: `url(${logoMark})`, maskImage: `url(${logoMark})`, WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskPosition: 'center', maskPosition: 'center' }}
             >
               <span className="footer-logo-gradient block h-full w-full rounded-sm transition-all duration-500" />
             </span>
-            <div className="text-xs uppercase tracking-[0.5em] text-white/60">BLOOMING HOUSE & TEXTURED TECHNO </div>
+            <div className="text-xs uppercase tracking-[0.5em] text-white/60">Blooming house & textured techno</div>
           </Link>
           <div className="flex flex-wrap gap-4">
             {socials.map(({ href, label, Icon }) => (
