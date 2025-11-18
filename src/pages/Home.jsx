@@ -5,9 +5,6 @@ import SEO from '../components/meta/SEO';
 import CelestialHero from '../components/sections/CelestialHero';
 import galleryOne from '../assets/images/arty-backgrounds/BSR 1.png';
 import galleryTwo from '../assets/images/arty-backgrounds/BSR 2.png';
-import MissBlissLogo from '../components/icons/MissBlissLogo';
-import MissSpaceLogo from '../components/icons/MissSpaceLogo';
-
 const focusArtists = [
   {
     name: 'Miss Bliss',
@@ -16,7 +13,7 @@ const focusArtists = [
     track: 'Te Quero',
     genre: 'Melodic Techno',
     rosterNote: 'Residency lead. Flowering pads and velvet percussion.',
-    Logo: MissBlissLogo
+    portrait: '/orbit/miss-bliss.png'
   },
   {
     name: 'Miss Space',
@@ -25,28 +22,30 @@ const focusArtists = [
     track: 'Drowning in the Dark',
     genre: 'Melodic Techno',
     rosterNote: 'Chrome tides, modular sequences, celestial bass.',
-    Logo: MissSpaceLogo
+    portrait: '/orbit/miss-space.jpg'
   }
 ];
 
 const discography = [
   {
-    catalog: 'BSR010',
-    title: 'Te Quero',
+    catalog: 'BSR012',
+    title: 'Velvet Bloom',
     artist: 'Miss Bliss',
-    artwork: '/artwork/miss-bliss/te-quero.png',
-    description: 'Analog haze, whispered falsetto and a low-end built for sunrise clubs.',
-    genre: 'Melodic Techno',
+    releaseDate: 'Dec 12, 2024 · tentative',
+    artwork: '/artwork/miss-bliss/BSR001 - Te Quero - Miss Bliss - Promotional Artwork.png',
+    description: 'Warm vocal layers and velvet percussion. The only drop locking in week one.',
+    genre: 'Blooming House',
     vibe: 'Velvet Bloom',
     url: 'https://open.spotify.com/track/0placeholder'
   },
   {
-    catalog: 'BSR011',
-    title: 'Drowning in the Dark',
+    catalog: 'BSR013',
+    title: 'Chrome Drift',
     artist: 'Miss Space',
-    artwork: '/artwork/miss-space/drowning-in-the-dark.png',
-    description: 'Chrome tide percussion and midnight pads cascading into sub bass.',
-    genre: 'Melodic Techno',
+    releaseDate: 'Dec 19, 2024 · tentative',
+    artwork: '/artwork/miss-space/BSR002 - Drowning in the Dark - Miss Space - Promotional Artwork.png',
+    description: 'Chrome tide percussion and midnight pads closing the year in grayscale smoke.',
+    genre: 'Textured Techno',
     vibe: 'Chrome Tide',
     url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   }
@@ -97,22 +96,20 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2" role="list">
-            {focusArtists.map((artist, index) => {
-              const LogoComponent = artist.Logo;
-              return (
-                <motion.article
-                  key={artist.name}
-                  role="listitem"
-                  className="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/5 p-8 shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -10, rotate: index % 2 === 0 ? -0.35 : 0.35 }}
+            {focusArtists.map((artist, index) => (
+              <motion.article
+                key={artist.name}
+                role="listitem"
+                className="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/5 p-8 shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10, rotate: index % 2 === 0 ? -0.35 : 0.35 }}
                   transition={{ duration: 0.9, delay: index * 0.08, ease: [0.65, 0.05, 0.36, 1] }}
-                  viewport={{ once: true, amount: 0.4 }}
-                >
-                  <motion.div
-                    className="absolute inset-0"
-                    style={{
+                viewport={{ once: true, amount: 0.4 }}
+              >
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
                       background: `radial-gradient(circle at 30% 20%, ${artist.gradient}, transparent 70%)`
                     }}
                     animate={{ opacity: [0.2, 0.55, 0.3] }}
@@ -123,7 +120,20 @@ export default function Home() {
                     style={{ mixBlendMode: 'screen' }}
                   />
                   <div className="relative flex h-full flex-col justify-between gap-6">
-                    <LogoComponent className="h-16 w-auto" />
+                    <div className="relative h-48 overflow-hidden rounded-[28px] border border-white/20 bg-black/50">
+                      {artist.portrait ? (
+                        <img
+                          src={artist.portrait}
+                          alt={`${artist.name} orbit portrait`}
+                          className="h-full w-full object-cover object-center"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.35em] text-white/50">
+                          Portrait pending
+                        </div>
+                      )}
+                    </div>
                     <div className="space-y-3">
                       <p className="text-xs uppercase tracking-[0.5em] text-white/70">BSR orbit</p>
                       <h3 className="text-3xl font-light tracking-tight">{artist.name}</h3>
@@ -135,8 +145,7 @@ export default function Home() {
                     </div>
                   </div>
                 </motion.article>
-              );
-            })}
+              ))}
           </div>
           <p className="text-xs uppercase tracking-[0.5em] text-white/60">New textures uploading soon</p>
         </section>
@@ -144,9 +153,9 @@ export default function Home() {
           <div className="absolute inset-0 aurora-gradient opacity-40" />
           <div className="container relative space-y-10 py-20">
             <div className="space-y-3 text-white">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/70">Discography</p>
-              <h2 className="text-3xl font-semibold">Immersive dance music</h2>
-              <p className="text-base text-white/75">Drop-ready tracks with transparent notes so you can swap art, copy, or links instantly.</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-white/70">Upcoming releases</p>
+              <h2 className="text-3xl font-semibold">Dec 12 + Dec 19</h2>
+              <p className="text-sm text-white/70">Only two drops close the year. Dates are tentative—assets stay ready.</p>
             </div>
             <div className="space-y-8">
               {discography.map((entry, index) => (
@@ -166,9 +175,19 @@ export default function Home() {
                       <span>{entry.catalog}</span>
                       <span>{entry.artist}</span>
                     </div>
+                    {entry.releaseDate && (
+                      <p className="text-xs uppercase tracking-[0.35em] text-white/60">{entry.releaseDate}</p>
+                    )}
                     <div>
                       <h3 className="text-2xl font-semibold">{entry.title}</h3>
                       <p className="mt-2 text-base text-white/80">{entry.description}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/60">
+                      {['Apple Music', 'Spotify', 'YouTube'].map((platform) => (
+                        <span key={`${entry.catalog}-${platform}`} className="rounded-full border border-white/20 px-3 py-1">
+                          {platform}: Coming Soon
+                        </span>
+                      ))}
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.4em]">
                       <span className="rounded-full border border-white/30 px-4 py-1 text-white/80">{entry.genre}</span>

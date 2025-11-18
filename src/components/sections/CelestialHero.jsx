@@ -1,44 +1,78 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import useVantaFog from '../../hooks/useVantaFog';
+import { VANTA_FOG_PRESET, VANTA_INTERACTIONS, HERO_CENTER_GLOW } from '../../config/vantaControls';
 
-/**
- * CelestialHero spotlights current roster energy + featured tracks.
- */
+const VINYL_SVG = '/BSR-VINYL-SVG.svg';
+const VINYL_GIF = '/BSR-VINYL-GIF.gif';
 export default function CelestialHero({
   label = 'UPLIFTING DANCEFLOORS AROUND THE WORLD.',
-  headline = 'Blooming House & Textured Techno',
-  subheadline = 'Record Label',
-  body = 'Bliss Sound Records hosts melodic techno & jazz textures—soft light, deep resonance.'
+  headline = 'BLISS SOUND RECORDS',
+  subheadline = 'Record Label'
 }) {
+  const heroFogOptions = React.useMemo(
+    () => ({
+      ...VANTA_FOG_PRESET,
+      highlightColor: 0xffdefa,
+      midtoneColor: 0x7ccfff,
+      lowlightColor: 0x050012,
+      speed: 1.35
+    }),
+    []
+  );
+  const heroFogInteractions = React.useMemo(
+    () => ({
+      ...VANTA_INTERACTIONS,
+      scrollRange: [0.78, 1.12],
+      centerBias: 1.2
+    }),
+    []
+  );
+  const heroRef = useVantaFog(heroFogOptions, heroFogInteractions);
+  const colorCycle = HERO_CENTER_GLOW.colors;
+
   return (
-    <section className="relative isolate -mt-24 flex min-h-screen items-center overflow-hidden bg-black text-white sm:-mt-28">
+    <section ref={heroRef} className="relative isolate -mt-24 flex min-h-screen items-center overflow-hidden bg-black text-white sm:-mt-28">
       <motion.div
-        className="absolute inset-0 aurora-gradient"
-        animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className="absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0"
         style={{
-          background:
-            'radial-gradient(circle at 15% 25%, rgba(255,255,255,0.2), transparent 45%), radial-gradient(circle at 85% 15%, rgba(91,112,255,0.35), transparent 55%), radial-gradient(circle at 60% 75%, rgba(255,122,179,0.25), transparent 60%)',
-          filter: 'blur(40px)'
+          background: `radial-gradient(circle at 50% 40%, ${colorCycle[0]}, transparent 60%)`,
+          filter: `blur(${HERO_CENTER_GLOW.blur}px)`
         }}
-        animate={{ opacity: [0.5, 0.9, 0.6] }}
+        animate={{
+          background: colorCycle.map((color) => `radial-gradient(circle at 50% 40%, ${color}, transparent 62%)`)
+        }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/70 to-black" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black" />
       <div className="container relative z-10 pb-20 pt-32 sm:pb-24 sm:pt-40">
         <div className="space-y-7 text-center">
+          <motion.figure
+            className="relative mx-auto flex h-48 w-48 items-center justify-center sm:h-56 sm:w-56"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+          >
+            <img
+              src={VINYL_GIF}
+              alt="BSR vinyl texture halo"
+              className="absolute inset-3 h-auto w-auto select-none object-contain opacity-60 blur-[2px] mix-blend-screen"
+              loading="lazy"
+            />
+            <motion.img
+              src={VINYL_SVG}
+              alt="Bliss Sound Records vinyl emblem"
+              className="relative z-10 h-full w-full select-none object-contain"
+              style={{ filter: 'drop-shadow(0 0 18px rgba(245,208,255,0.45)) drop-shadow(0 0 32px rgba(124,201,255,0.3))' }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            />
+          </motion.figure>
           <p className="text-[0.65rem] uppercase tracking-[0.65em] text-white/70">{label}</p>
-          <h1 className="text-4xl font-semibold uppercase tracking-tight sm:text-6xl lg:text-7xl">{headline}</h1>
+          <h1 className="text-4xl font-light uppercase tracking-[0.45em] sm:text-6xl lg:text-[4.5rem]">{headline}</h1>
           <p className="text-sm uppercase tracking-[0.35em] text-white/80">{subheadline}</p>
-          <p className="mx-auto max-w-4xl text-lg leading-relaxed text-white/85 sm:text-xl">{body}</p>
-          <p className="text-base text-white/80">
-            Bliss Sound Records is home to melodic techno & uplifting house music.
-          </p>
-          <p className="text-sm font-semibold uppercase tracking-[0.5em] text-white">Club rituals &amp; dance music</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white">Focused dance rituals worldwide</p>
           <div className="mt-12 grid gap-4 text-sm uppercase tracking-[0.2em] text-white/80 sm:grid-cols-3">
             {[
               { label: 'Stream Discography', verb: 'Listen', copy: 'From Te Quero to Drowning In The Dark', to: '/releases' },

@@ -1,5 +1,4 @@
 import React from 'react';
-import SectionFrame from '../components/primitives/SectionFrame';
 import SubmissionForm from '../features/submissions/SubmissionForm';
 import SEO from '../components/meta/SEO';
 
@@ -30,26 +29,26 @@ export default function Submissions() {
           }
         }}
       />
-      <SectionFrame>
-        <div className="space-y-10">
+      <section className="text-white">
+        <div className="container space-y-10 py-16">
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.4em] text-black/60">Submissions</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-white/60">Submissions</p>
             <h1 className="text-4xl font-semibold">Demo intake</h1>
-            <p className="text-base text-black/70">
+            <p className="text-base text-white/70">
               A polished, secure intake form for artists exploring velvet, percussive textures. Complete the steps below to route your music directly to the Bliss Sound A&R desk.
             </p>
           </div>
+          <SubmissionForm />
           <div className="grid gap-4 md:grid-cols-3">
             {expectations.map((item) => (
-              <article key={item.title} className="rounded-3xl border border-black/10 bg-white/80 p-4 text-sm shadow-[0_20px_35px_rgba(0,0,0,0.05)]">
-                <p className="text-xs uppercase tracking-[0.3em] text-black/60">{item.title}</p>
-                <p className="mt-2 text-black/70">{item.body}</p>
+              <article key={item.title} className="rounded-3xl border border-white/15 bg-black/40 p-5 text-sm backdrop-blur-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/60">{item.title}</p>
+                <p className="mt-2 text-white/70">{item.body}</p>
               </article>
             ))}
           </div>
-          <SubmissionForm />
         </div>
-      </SectionFrame>
+      </section>
     </>
   );
 }

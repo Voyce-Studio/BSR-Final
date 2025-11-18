@@ -6,8 +6,8 @@ import RouteTransition from './components/transitions/RouteTransition';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import ScrollbarStyles from './components/layout/ScrollbarStyles';
 import AppShell from './components/layout/AppShell';
-import NeonWaveBackground from './components/visuals/NeonWaveBackground';
 import SiteChrome from './components/layout/SiteChrome';
+import VantaBackground from './components/visuals/VantaBackground';
 
 export default function App() {
   const navRef = useRef(null);
@@ -16,7 +16,8 @@ export default function App() {
     <HelmetProvider>
       <ScrollbarStyles />
       <div className="relative min-h-screen overflow-hidden bg-black text-white scrollbar-minimal">
-        <NeonWaveBackground className="pointer-events-none absolute inset-0 opacity-20" />
+        <VantaBackground className="absolute inset-0" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-[#050111]" aria-hidden />
         <SiteChrome className="text-white">
           <Navbar ref={navRef} />
           <ErrorBoundary>

@@ -1,5 +1,3 @@
-import artistBackdropOne from '../assets/images/arty-backgrounds/BSR 1.png';
-import artistBackdropTwo from '../assets/images/arty-backgrounds/BSR 2.png';
 
 export const routesMeta = [
   { path: '/', title: 'Bliss Sound Records — Techno & House with an angelic vibe', description: 'A boutique label for melodic techno, hard techno, afro-house and deep house.' },
@@ -24,6 +22,10 @@ export const featuredReleases = [
   { id: 'release-3', title: 'High Tide Choir', artists: 'MOONLOX', date: 'Jan 2025', formats: ['Digital'], cover: '/assets/images/release-3.webp' }
 ];
 
+const placeholderSummary = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus vitae elit sodales rutrum.';
+
+const MISS_BLISS_MIX_LINK = 'https://youtu.be/YmFKM8oeOW8?si=26w3tqNW0IG92nAg';
+
 export const latestDrops = [
   {
     id: 'drop-1',
@@ -35,7 +37,7 @@ export const latestDrops = [
     description: 'Analog haze with whispered falsetto and low-end meant for sunrise main stages.',
     platform: 'Spotify',
     url: 'https://open.spotify.com/track/0placeholder',
-    artwork: '/artwork/miss-bliss/te-quero.png',
+    artwork: '/artwork/miss-bliss/BSR001 - Te Quero - Miss Bliss - Promotional Artwork.png',
     length: '6:47'
   },
   {
@@ -48,7 +50,7 @@ export const latestDrops = [
     description: 'Chrome tide percussion, midnight pads, and modular basslines built for warehouses.',
     platform: 'YouTube',
     url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    artwork: '/artwork/miss-space/drowning-in-the-dark.png',
+    artwork: '/artwork/miss-space/BSR002 - Drowning in the Dark - Miss Space - Promotional Artwork.png',
     length: '7:05'
   },
   {
@@ -61,7 +63,7 @@ export const latestDrops = [
     description: 'A duet of crystalline arps and blissed-out vocal swells, ready for festival sunsets.',
     platform: 'Spotify',
     url: 'https://open.spotify.com/track/2placeholder',
-    artwork: '/artwork/miss-bliss/te-quero.png',
+    artwork: '/artwork/miss-bliss/BSR001 - Te Quero - Miss Bliss - Promotional Artwork.png',
     length: '5:58'
   }
 ];
@@ -71,97 +73,120 @@ export const artistList = [
     slug: 'miss-bliss',
     name: 'Miss Bliss',
     style: 'Blooming House',
-    summary: 'Velvet pulses, analog haze, whispered falsetto loops drifting over warm shimmer percussion.',
-    focus: 'Te Quero · warm shimmer',
+    summary: placeholderSummary,
+    focus: 'Velvet Bloom · Dec 12',
     status: 'Resident',
     spotify: 'https://open.spotify.com/track/0placeholder',
-    palette: { glow: 'rgba(255,158,243,0.4)', accent: '#ff8ef3' },
-    image: artistBackdropOne,
-    festivalReady: 'Festival-ready: Mainstage, AV synchro'
+    pressKit: '/press_kit/miss-bliss/miss-bliss-press-kit.pdf',
+    palette: { glow: 'rgba(255,158,243,0.35)', accent: '#ff8ef3' },
+    image: '/artwork/miss-bliss/profile_miss_bliss.PNG',
+    tags: ['Vocal lead', 'Sunrise sets']
   },
   {
     slug: 'miss-space',
     name: 'Miss Space',
     style: 'Textured Techno',
-    summary: 'Chrome tide arps, midnight pads, and drum programming built for lunar dance floors.',
-    focus: 'Drowning in the Dark · chrome hush',
+    summary: placeholderSummary,
+    focus: 'Chrome Drift · Dec 19',
     status: 'Resident',
     spotify: 'https://open.spotify.com/track/1placeholder',
+    pressKit: '/press_kit/miss-space/miss-space-press-kit.pdf',
     palette: { glow: 'rgba(92,184,255,0.35)', accent: '#5cb8ff' },
-    image: artistBackdropTwo,
-    festivalReady: 'Festival-ready: Live modular, immersive visuals'
+    image: '/artwork/miss-space/profile_miss_space.JPG',
+    tags: ['Modular live', 'Warehouse']
   },
   {
-    slug: 'more-coming',
-    name: 'More coming soon',
-    style: 'Future roster',
-    summary: 'Space reserved for the next Bliss Sound texture. Demos welcome—soft light, deep resonance.',
-    focus: 'Send your demo · angelic bloom',
+    slug: 'tyss',
+    name: 'TYSS',
+    style: 'Club Pop',
+    summary: placeholderSummary,
+    focus: 'Debut tape · production lock',
     status: 'Incoming',
-    spotify: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3',
-    palette: { glow: 'rgba(255,209,160,0.35)', accent: '#ffd199' },
-    image: artistBackdropOne,
-    festivalReady: 'Festival-ready: TBA'
+    spotify: null,
+    pressKit: '/press_kit/tyss/tyss-press-kit.pdf',
+    palette: { glow: 'rgba(255,211,185,0.35)', accent: '#fdd8b5' },
+    image: '/artwork/tyss/profile_tyss.PNG',
+    tags: ['Club pop', 'Vocoder']
+  },
+  {
+    slug: 'yulia-leya',
+    name: 'Yulia Leya',
+    style: 'Progressive Techno',
+    summary: placeholderSummary,
+    focus: 'Studio residency',
+    status: 'Incoming',
+    spotify: null,
+    pressKit: '/press_kit/yulia-leya/yulia-leya-press-kit.pdf',
+    palette: { glow: 'rgba(180,215,255,0.35)', accent: '#b4d7ff' },
+    image: '/artwork/yulia-leya/profile_yulia_leya.PNG',
+    tags: ['Strings', 'Atmospheric']
+  },
+  {
+    slug: 'kama-way',
+    name: 'Kama Way',
+    style: 'Deep Tech',
+    summary: placeholderSummary,
+    focus: 'First EP · lining up',
+    status: 'Incoming',
+    spotify: null,
+    pressKit: '/press_kit/kama-way/kama-way-press-kit.pdf',
+    palette: { glow: 'rgba(255,233,170,0.3)', accent: '#ffe278' },
+    image: null,
+    tags: ['Vinyl only', 'Lo-slung']
+  },
+  {
+    slug: 'daria-bluur',
+    name: 'Daria Bluur',
+    style: 'Ambient Club',
+    summary: placeholderSummary,
+    focus: 'Live AV sketches',
+    status: 'Incoming',
+    spotify: null,
+    pressKit: '/press_kit/daria-bluur/daria-bluur-press-kit.pdf',
+    palette: { glow: 'rgba(204,190,255,0.32)', accent: '#ccbfff' },
+    image: null,
+    tags: ['AV set', 'Cooldown']
   }
 ];
 
 export const eventList = [
   {
-    name: 'Goa Listening Ritual',
-    date: 'Coming soon · Goa',
+    name: 'Seaside Dance Ritual',
+    date: 'Coming soon · coastline TBA',
     status: 'Upcoming',
-    summary: 'A beachside installation pairing live visuals with unreleased Bliss Sound textures. Subscribe for date + RSVP.',
+    summary: 'Open-air celebration led by the Bliss Sound roster. Full lineup, art direction, and RSVP drop via newsletter first.',
     ticketsUrl: '/newsletter',
     ctaLabel: 'Subscribe'
   },
   {
-    name: 'Meet & Greet — Artist Circle',
+    name: 'Artist Circle — Demo Exchange',
     date: 'Invite only · Bliss Sound HQ',
     status: 'Private',
-    summary: 'Intimate meet & greet with Miss Bliss, Miss Space, and the A&R team. Invitations are curated—apply for consideration.',
-    ticketsUrl: '',
-    ctaLabel: 'Invite only'
+    summary: 'Techno and house producers submit demos to join the circle; we shortlist artists aligned with the catalog and reply personally.',
+    ticketsUrl: '/submissions',
+    ctaLabel: 'Send demo'
   }
 ];
 
-export const mixList = [
-  {
-    title: 'Pulse Bloom 021',
-    curator: 'Lúmen',
-    artist: 'Miss Bliss',
-    genres: ['Blooming House', 'Melodic Techno'],
-    vibes: ['Velvet Bloom'],
-    description: 'Fluid 60-minute set recorded at the Bloom Room featuring unreleased Miss Bliss IDs.',
-    url: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3',
-    platform: 'Spotify',
-    length: '60 min',
-    mood: 'velvet shimmer'
-  },
-  {
-    title: 'Afterglow 004',
-    curator: 'BSR Residents',
-    artist: 'Miss Space',
-    genres: ['Textured Techno', 'Deep Tech'],
-    vibes: ['Chrome Tide'],
-    description: 'Chrome tide techno with live modular percussion, streamed from Lisbon.',
-    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    platform: 'YouTube',
-    length: '72 min',
-    mood: 'chrome tide'
-  },
-  {
-    title: 'Midnight Bloom Live',
-    curator: 'BSR Radio',
-    artist: 'Incoming Artist',
-    genres: ['Ambient Club', 'Downtempo'],
-    vibes: ['Silk Drift'],
-    description: 'Silky ambient constructs meant for decompression sets—teasing the next resident.',
-    url: 'https://open.spotify.com/playlist/37i9dQZF1DX1MUPbVkm5U3',
-    platform: 'Spotify',
-    length: '45 min',
-    mood: 'silk drift'
-  }
+const mixArtworks = [
+  '/artwork/miss-bliss/BSR001 - Te Quero - Miss Bliss - Promotional Artwork.png',
+  '/artwork/miss-space/BSR002 - Drowning in the Dark - Miss Space - Promotional Artwork.png'
 ];
+
+export const mixList = Array.from({ length: 24 }, (_, index) => {
+  const sequence = String(index + 1).padStart(2, '0');
+  return {
+    title: `Miss Bliss Mix ${sequence}`,
+    curator: 'Miss Bliss',
+    artist: 'Miss Bliss',
+    genres: [],
+    vibes: [],
+    description: placeholderSummary,
+    url: MISS_BLISS_MIX_LINK,
+    platform: 'YouTube',
+    artwork: mixArtworks[index % mixArtworks.length]
+  };
+});
 
 export const catalogueEntries = [
   {

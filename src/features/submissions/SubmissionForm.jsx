@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
@@ -44,11 +43,7 @@ export default function SubmissionForm() {
   } = useForm({ resolver: zodResolver(schema), defaultValues: { timeline: releaseWindows[1] } });
   const [status, setStatus] = React.useState(null);
 
-  const watchFields = watch(['artist', 'email', 'links', 'consent']);
   const attachedFile = watch('file')?.[0];
-  const completion = Math.round(
-    (watchFields.filter((value) => (typeof value === 'boolean' ? value : value?.length)).length / watchFields.length) * 100
-  );
 
   const onSubmit = async (data) => {
     try {
@@ -78,35 +73,13 @@ export default function SubmissionForm() {
   const handleFilePrompt = () => fileInputRef.current?.click();
 
   return (
-    <div className="space-y-8 overflow-hidden rounded-[32px] border border-white/15 bg-slate-950 p-8 text-white shadow-[0_30px_70px_rgba(0,0,0,0.65)]">
-      <div className="grid gap-6 lg:grid-cols-[1fr,260px]">
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Demo intake</p>
-          <h3 className="text-3xl font-semibold leading-tight text-white">Share a living link or one WAV and outline how we can help release it.</h3>
-          <p className="text-sm text-white/70">
-            High-energy melodic techno, jazz-influenced house, percussive experiments, and club-focused ambience fit the brief. Please include private links with download enabled when possible.
-          </p>
-          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
-            {insightPills.map((pill) => (
-              <span key={pill.label} className="rounded-full border border-white/20 px-3 py-1 text-white/80">
-                <strong className="mr-2 text-white/60">{pill.label}:</strong>
-                {pill.value}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="rounded-3xl border border-white/15 bg-white/5 p-5 shadow-inner">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Progress tracker</p>
-          <div className="mt-3 h-3 overflow-hidden rounded-full bg-white/10">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-bsr-lilac via-bsr-blue to-bsr-orange"
-              animate={{ width: `${completion}%` }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            />
-          </div>
-          <p className="mt-2 text-sm text-white/80">{completion || 0}% complete</p>
-          <p className="text-xs text-white/60">Finish the highlighted steps to unlock the submit button.</p>
-        </div>
+    <div className="space-y-8 rounded-[36px] border border-white/15 bg-black/45 p-8 text-white backdrop-blur-xl">
+      <div className="space-y-3">
+        <p className="text-xs uppercase tracking-[0.4em] text-white/60">Upload</p>
+        <h3 className="text-3xl font-semibold leading-tight">Share a living link or one WAV and outline how we can help release it.</h3>
+        <p className="text-sm text-white/70">
+          High-energy melodic techno, jazz-influenced house, percussive experiments, and club-focused ambience fit the brief. Include private links with download enabled when possible.
+        </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -117,7 +90,7 @@ export default function SubmissionForm() {
               <input
                 type={field.type || 'text'}
                 placeholder={field.placeholder}
-                className="rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+                className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
                 {...register(field.name)}
               />
               {errors[field.name] && <span className="text-xs text-bsr-orange">{errors[field.name].message}</span>}
@@ -135,7 +108,9 @@ export default function SubmissionForm() {
                   key={window}
                   type="button"
                   onClick={() => setValue('timeline', window, { shouldValidate: true })}
-                  className={`rounded-2xl border px-4 py-3 text-sm transition ${isActive ? 'border-white bg-white text-black' : 'border-white/20 bg-black/30 text-white/70 hover:border-white/60'}`}
+                  className={`rounded-2xl border px-4 py-3 text-sm transition ${
+                    isActive ? 'border-white bg-white text-black' : 'border-white/25 bg-transparent text-white/70 hover:border-white/60'
+                  }`}
                 >
                   {window}
                 </button>
@@ -151,7 +126,7 @@ export default function SubmissionForm() {
             <textarea
               rows="4"
               placeholder="SoundCloud (private), Dropbox, Drive, YouTube, WeTransfer, etc."
-              className="rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+              className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
               {...register('links')}
             />
             {errors.links && <span className="text-xs text-bsr-orange">{errors.links.message}</span>}
@@ -161,7 +136,7 @@ export default function SubmissionForm() {
             <textarea
               rows="4"
               placeholder="Tell us about the show-ready concept, collaborators, or stages you envision."
-              className="rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+              className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
               {...register('notes')}
             />
           </label>
@@ -173,15 +148,13 @@ export default function SubmissionForm() {
             <input
               type="text"
               placeholder="@instagram · @soundcloud · website"
-              className="rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+              className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
               {...register('socials')}
             />
           </label>
           <div className="text-sm">
             <span className="text-xs uppercase tracking-[0.3em] text-white/60">Upload WAV (optional)</span>
-            <div
-              className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-dashed border-white/20 bg-black/30 px-4 py-6 text-left"
-            >
+            <div className="mt-2 flex flex-col items-start gap-3 rounded-2xl border border-dashed border-white/25 bg-transparent px-4 py-6 text-left">
               <input ref={fileInputRef} type="file" accept=".wav,audio/wav" className="hidden" {...register('file')} />
               <button
                 type="button"
@@ -198,34 +171,42 @@ export default function SubmissionForm() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <label className="flex items-start gap-3 text-sm">
-            <input type="checkbox" className="mt-1" {...register('consent')} />
-            <span>I consent to Bliss Sound Records storing this information for demo review and follow-up communication.</span>
-          </label>
-          <div className="space-y-2 text-xs">
-            {errors.consent && <p className="text-bsr-orange">{errors.consent.message}</p>}
-            {status === 'error' && <p className="text-bsr-orange">Something glitched — refresh and try again.</p>}
-            {status === 'sending' && <p className="text-white/70">Uploading… please keep this tab open.</p>}
+          <div className="rounded-2xl border border-white/20 px-4 py-3 text-sm text-white/70">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Notes</p>
+            <p>Upcoming shows, collaborators, visuals, play history, or any other detail can be added inside the story field above.</p>
           </div>
+          <label className="flex flex-col gap-2 text-sm">
+            <span className="text-xs uppercase tracking-[0.3em] text-white/60">Consent</span>
+            <div className="rounded-2xl border border-white/20 px-4 py-3">
+              <label className="flex items-center gap-3 text-white/70">
+                <input type="checkbox" {...register('consent')} className="h-4 w-4" />
+                I confirm this submission is original and agree to be contacted via email.
+              </label>
+              {errors.consent && <span className="mt-2 block text-xs text-bsr-orange">{errors.consent.message}</span>}
+            </div>
+          </label>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4 text-sm">
           <button
             type="submit"
-            className="rounded-full border border-white px-8 py-3 text-xs uppercase tracking-[0.35em] text-white transition hover:bg-white hover:text-black disabled:opacity-50"
             disabled={isSubmitting}
+            className="rounded-full border border-white px-6 py-3 text-xs uppercase tracking-[0.4em] transition hover:bg-white hover:text-black disabled:opacity-60"
           >
-            {isSubmitting ? 'Sending demo…' : 'Send demo'}
+            {isSubmitting ? 'Sending…' : 'Submit demo'}
           </button>
-          <span className="text-xs text-white/60">
-            A confirmation email arrives shortly. Questions? Write{' '}
-            <a className="underline" href="mailto:demos@blisssoundrecords.com">
-              demos@blisssoundrecords.com
-            </a>
-            .
-          </span>
+          {status === 'error' && <span className="text-xs text-bsr-orange">Something went wrong. Please try again.</span>}
         </div>
       </form>
+
+      <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
+        {insightPills.map((pill) => (
+          <span key={pill.label} className="rounded-full border border-white/20 px-4 py-2 text-white/80">
+            <strong className="mr-2 text-white/60">{pill.label}:</strong>
+            {pill.value}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

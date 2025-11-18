@@ -73,7 +73,7 @@ export default function Mixes() {
         path="/mixes"
         keywords={['BSR mixes', 'techno mixes', 'YouTube DJ sets', 'Spotify playlist Bliss Sound']}
       />
-      <section className="bg-black text-white">
+      <section className="text-white">
         <div className="container space-y-8 py-16">
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-[0.4em] text-white/60">Signals</p>
@@ -82,8 +82,8 @@ export default function Mixes() {
               Mixes now highlight Bliss Sound artists—filter by genre, vibe, or resident to find the perfect session.
             </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[280px,1fr]">
-            <aside className="space-y-6 rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.45)]">
+          <div className="grid gap-8 lg:grid-cols-[300px,1fr]">
+            <aside className="space-y-6 rounded-[28px] border border-white/15 bg-black/30 p-5 backdrop-blur-xl">
               <div className="space-y-2">
                 <label htmlFor="mix-search" className="text-xs uppercase tracking-[0.4em] text-white/60">
                   Search
