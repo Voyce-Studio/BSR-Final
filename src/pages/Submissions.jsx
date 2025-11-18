@@ -39,6 +39,13 @@ export default function Submissions() {
             </p>
           </div>
           <SubmissionForm />
+          <div className="rounded-3xl border border-white/15 bg-black/35 p-5 text-sm text-white/70">
+            Trouble with the form or sending multiple files? Compress stems into one download and email{' '}
+            <a href="mailto:blisssoundrecords@gmail.com" className="underline">
+              blisssoundrecords@gmail.com
+            </a>
+            .
+          </div>
           <div className="grid gap-4 md:grid-cols-3">
             {expectations.map((item) => (
               <article key={item.title} className="rounded-3xl border border-white/15 bg-black/40 p-5 text-sm backdrop-blur-xl">

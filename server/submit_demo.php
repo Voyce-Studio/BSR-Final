@@ -1,6 +1,7 @@
 <?php
 // Ensure php.ini has: upload_max_filesize=300M, post_max_size=310M, max_execution_time=120
 $recipient = 'blisssoundrecords@gmail.com';
+$ccRecipient = 'hello@blisssoundrecords.com';
 $from_email = 'hello@blisssoundrecords.com';
 $upload_dir = __DIR__ . '/uploads';
 $base_url = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'];
@@ -78,10 +79,11 @@ $bodyAdmin = "
   <hr><p>Sent automatically by BSR Submissions.</p>
 ";
 
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8\r\n";
-$headers .= "From: Bliss Sound Records <{$from_email}>\r\n";
-@mail($recipient, $subject, $bodyAdmin, $headers);
+$adminHeaders = "MIME-Version: 1.0\r\n";
+$adminHeaders .= "Content-type:text/html;charset=UTF-8\r\n";
+$adminHeaders .= "From: Bliss Sound Records <{$from_email}>\r\n";
+$adminHeaders .= "Cc: {$ccRecipient}\r\n";
+@mail($recipient, $subject, $bodyAdmin, $adminHeaders);
 
 $subjectUser = "Thanks for your demo, {$artist} — Bliss Sound Records";
 $bodyUser = "
@@ -95,6 +97,9 @@ $bodyUser = "
     </div>
   </div>
 ";
-@mail($email, $subjectUser, $bodyUser, $headers);
+$userHeaders = "MIME-Version: 1.0\r\n";
+$userHeaders .= "Content-type:text/html;charset=UTF-8\r\n";
+$userHeaders .= "From: Bliss Sound Records <{$from_email}>\r\n";
+@mail($email, $subjectUser, $bodyUser, $userHeaders);
 
 echo json_encode(['ok' => true]);

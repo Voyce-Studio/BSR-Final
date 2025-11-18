@@ -28,7 +28,7 @@ export default function Footer() {
             >
               <span className="footer-logo-gradient block h-full w-full rounded-sm transition-all duration-500" />
             </span>
-            <div className="text-xs uppercase tracking-[0.5em] text-white/60">Blooming house & textured techno</div>
+            <div className="text-xs uppercase tracking-[0.5em] text-white/60">BLISS SOUND RECORDS</div>
           </Link>
           <div className="flex flex-wrap gap-4">
             {socials.map(({ href, label, Icon }) => (
@@ -49,7 +49,10 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-4 text-[0.65rem] uppercase tracking-[0.45em] text-white/60">
           <span>© {new Date().getFullYear()} Bliss Sound Records | MADE WITH LOVE BY PATTY </span>
           <div className="flex flex-wrap gap-6">
-            <a href="/sitemap.xml" className="transition hover:text-white">Sitemap</a>
+            <Link to="/sitemap" className="transition hover:text-white">
+              Sitemap
+            </Link>
+            <a href="/sitemap.xml" className="transition hover:text-white">XML</a>
             <Link to="/legal/privacy" className="transition hover:text-white">
               Privacy
             </Link>

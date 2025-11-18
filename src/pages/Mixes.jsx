@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import clsx from 'clsx';
 import MixesGrid from '../features/mixes/MixesGrid';
 import SEO from '../components/meta/SEO';
 import { mixList } from '../utils/constants';
@@ -39,12 +40,9 @@ export default function Mixes() {
         mix.artist?.toLowerCase().includes(search) ||
         mix.description?.toLowerCase().includes(search);
 
-      const matchesGenres =
-        filters.genres.length === 0 || filters.genres.every((genre) => mix.genres?.includes(genre));
-      const matchesVibes =
-        filters.vibes.length === 0 || filters.vibes.every((vibe) => mix.vibes?.includes(vibe));
-      const matchesArtists =
-        filters.artists.length === 0 || filters.artists.includes(mix.artist);
+      const matchesGenres = filters.genres.length === 0 || filters.genres.every((genre) => mix.genres?.includes(genre));
+      const matchesVibes = filters.vibes.length === 0 || filters.vibes.every((vibe) => mix.vibes?.includes(vibe));
+      const matchesArtists = filters.artists.length === 0 || filters.artists.includes(mix.artist);
 
       return matchesText && matchesGenres && matchesVibes && matchesArtists;
     });
@@ -74,33 +72,32 @@ export default function Mixes() {
         keywords={['BSR mixes', 'techno mixes', 'YouTube DJ sets', 'Spotify playlist Bliss Sound']}
       />
       <section className="text-white">
-        <div className="container space-y-8 py-16">
+        <div className="container space-y-10 py-16">
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-[0.4em] text-white/60">Signals</p>
             <h1 className="text-4xl font-semibold">BSR Mix Archive</h1>
             <p className="text-base text-white/70">
-              Mixes now highlight Bliss Sound artists—filter by genre, vibe, or resident to find the perfect session.
+              Miss Bliss leads twenty-four mix capsules. Keep the search at the top, swipe the cards, and open the embedded player without leaving the page.
             </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[300px,1fr]">
-            <aside className="space-y-6 rounded-[28px] border border-white/15 bg-black/30 p-5 backdrop-blur-xl">
-              <div className="space-y-2">
-                <label htmlFor="mix-search" className="text-xs uppercase tracking-[0.4em] text-white/60">
-                  Search
-                </label>
-                <input
-                  id="mix-search"
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Artist, curator, venue..."
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-sm text-white focus:border-white focus:outline-none"
-                />
-              </div>
+          <div className="space-y-6 rounded-[32px] border border-white/15 bg-black/30 p-6 backdrop-blur-xl">
+            <label htmlFor="mix-search" className="block text-xs uppercase tracking-[0.4em] text-white/60">
+              Search mixes
+            </label>
+            <input
+              id="mix-search"
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Artist, curator, venue..."
+              className="w-full rounded-2xl border border-white/20 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+            />
+            <div className="flex flex-col gap-4 text-xs uppercase tracking-[0.35em] text-white/60">
               {filterTypes.map(({ key, label }) => (
-                <div key={key} className="space-y-2">
-                  <p className="text-xs uppercase tracking-[0.4em] text-white/60">{label}</p>
+                <div key={key} className="flex flex-wrap items-center gap-3">
+                  <span>{label}</span>
                   <div className="flex flex-wrap gap-2">
+                    {options[key].length === 0 && <span className="text-white/40">—</span>}
                     {options[key].map((value) => {
                       const active = filters[key].includes(value);
                       return (
@@ -108,9 +105,10 @@ export default function Mixes() {
                           key={value}
                           type="button"
                           onClick={() => toggleFilter(key, value)}
-                          className={`rounded-full px-4 py-1 text-xs uppercase tracking-[0.3em] transition ${
-                            active ? 'bg-white text-black' : 'border border-white/30 text-white/70'
-                          }`}
+                          className={clsx(
+                            'rounded-full px-4 py-1 text-[0.55rem] tracking-[0.35em] transition',
+                            active ? 'bg-white text-black' : 'border border-white/30 text-white/70 hover:border-white/60'
+                          )}
                         >
                           {value}
                         </button>
@@ -122,13 +120,13 @@ export default function Mixes() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="w-full rounded-full border border-white px-4 py-2 text-xs uppercase tracking-[0.4em] transition hover:bg-white hover:text-black"
+                className="ml-auto rounded-full border border-white px-4 py-1 text-[0.55rem] tracking-[0.35em] transition hover:bg-white hover:text-black"
               >
-                Reset filters
+                Reset
               </button>
-            </aside>
-            <MixesGrid mixes={filteredMixes} />
+            </div>
           </div>
+          <MixesGrid mixes={filteredMixes} />
         </div>
       </section>
     </>

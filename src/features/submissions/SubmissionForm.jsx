@@ -164,7 +164,9 @@ export default function SubmissionForm() {
                 {attachedFile ? 'Replace file' : 'Attach WAV'}
               </button>
               <p className="text-xs text-white/60">
-                {attachedFile ? `${attachedFile.name} — ${(attachedFile.size / 1024 / 1024).toFixed(1)} MB` : 'Max 300 MB · rename file with artist name.'}
+                {attachedFile
+                  ? `${attachedFile.name} — ${(attachedFile.size / 1024 / 1024).toFixed(1)} MB`
+                  : 'Max 300 MB · zip multiple files before uploading.'}
               </p>
             </div>
           </div>

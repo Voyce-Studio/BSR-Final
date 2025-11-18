@@ -54,17 +54,24 @@ export default function CelestialHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: 'easeOut' }}
           >
+            <motion.span
+              className="absolute inset-0 rounded-full blur-3xl opacity-80"
+              style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35), transparent 60%)' }}
+              animate={{
+                background: colorCycle.map((color) => `radial-gradient(circle, ${color}, transparent 65%)`)
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            />
             <img
               src={VINYL_GIF}
               alt="BSR vinyl texture halo"
-              className="absolute inset-3 h-auto w-auto select-none object-contain opacity-60 blur-[2px] mix-blend-screen"
+              className="absolute inset-3 h-auto w-auto select-none object-contain opacity-45"
               loading="lazy"
             />
             <motion.img
               src={VINYL_SVG}
               alt="Bliss Sound Records vinyl emblem"
               className="relative z-10 h-full w-full select-none object-contain"
-              style={{ filter: 'drop-shadow(0 0 18px rgba(245,208,255,0.45)) drop-shadow(0 0 32px rgba(124,201,255,0.3))' }}
               animate={{ rotate: 360 }}
               transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
             />

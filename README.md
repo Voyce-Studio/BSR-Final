@@ -11,7 +11,7 @@ Single-page React + Vite experience with animated gradients, frosted glass UI, a
 ## Logos & favicons
 
 - Navbar uses `/public/logo.svg`.
-- Favicon + Apple icon use `/public/BSR.svg`. Replace the placeholder SVG if you have an updated mark. Tab color is set to black via `<meta name="theme-color" content="#000000">`.
+- Favicon + Apple icon use `/public/favicon.svg`, which wraps the BSR vinyl mark inside a black rounded square. Swap `/public/BSR-VINYL-SVG.svg` if you refresh the logo artwork—the favicon will pick it up automatically. Tab color is set to black via `<meta name="theme-color" content="#000000">`.
 
 ## PHP upload limits on Hostinger
 
@@ -39,6 +39,25 @@ php_value max_execution_time 120
 | `npm run build` | Production build + sitemap generation |
 | `npm run sitemap` | Regenerate `public/sitemap.xml` |
 | `npm run lint` | ESLint across `src` |
+
+## Forms & autoresponders
+
+- `server/contact.php`, `server/events_request.php`, `server/newsletter.php`, and `server/submit_demo.php` all send primary mail to `blisssoundrecords@gmail.com`, CC `hello@blisssoundrecords.com`, and respond from `hello@blisssoundrecords.com` so Hostinger deliverability stays consistent.
+- Contact + demo submissions reply to the sender with a friendly confirmation; newsletter + host requests remain silent externally.
+- If you swap sender addresses, update the `$fromAddress` / `$from_email` constants and the `Cc` line per script.
+
+## Artist roster & spotlight
+
+- `src/pages/Artists.jsx` drives three areas:
+  - Spotlight cards (`SPOTLIGHT_COPY`) for upcoming releases. Update those blurbs when you revise the launch stories.
+  - Resident / incoming grids use `artistList` from `src/utils/constants.js`. If you don’t have bios yet, just leave the names; replacing `summary` will pipe straight into the UI when you’re ready.
+  - TYSS currently shows a disabled “Press kit” button until a real PDF is dropped inside `/public/press_kit/tyss`.
+- Visual Diary (`/visual-diary`) pulls from `/public/press_kit/brand-kit` plus the per-artist folders, so swapping PDFs automatically updates the download table.
+
+## Social links
+
+- All template links to Instagram use `https://www.instagram.com/blisssoundrecords`.
+- YouTube buttons (Events page and Social footer) now use the label channel: `https://www.youtube.com/channel/UCetKatn1FSCPTdPzWT9viFA`. Change the `socials.youtube` entry in `src/utils/constants.js` if you rebrand the channel slug.
 
 ## Deploy checklist
 

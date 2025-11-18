@@ -4,14 +4,16 @@ export const VANTA_FOG_PRESET = {
   midtoneColor: 0x7cc9ff,
   lowlightColor: 0x040112,
   baseColor: 0x010103,
-  speed: 1.25,
+  speed: 1.15,
   zoom: 0.9
 };
 
 export const VANTA_INTERACTIONS = {
   respondToScroll: true,
-  scrollRange: [0.78, 1.08],
-  centerBias: 1.35
+  scrollRange: [0.78, 1.1],
+  centerBias: 1.15,
+  oscillateSpeed: true,
+  speedRange: [0.95, 1.45]
 };
 
 export const HERO_CENTER_GLOW = {

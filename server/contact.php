@@ -2,8 +2,8 @@
 // Contact endpoint: handles general enquiries and routes mailthrough to the Bliss Sound team.
 // Keep this script outside /public to prevent direct access; deploy alongside submit_demo.php.
 
-$primaryRecipient = 'hello@blisssoundrecords.com';
-$archiveRecipient = 'signal-log@blisssoundrecords.com'; // hidden archival inbox
+$primaryRecipient = 'blisssoundrecords@gmail.com';
+$ccRecipient = 'hello@blisssoundrecords.com';
 $fromAddress = 'hello@blisssoundrecords.com';
 
 header('Content-Type: application/json');
@@ -40,7 +40,7 @@ $headers = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8\r\n";
 $headers .= "From: Bliss Sound Records <{$fromAddress}>\r\n";
 $headers .= "Reply-To: {$name} <{$email}>\r\n";
-$headers .= "Bcc: {$archiveRecipient}\r\n"; // hidden log copy
+$headers .= "Cc: {$ccRecipient}\r\n";
 
 if (!mail($primaryRecipient, $subject, $body, $headers)) {
   http_response_code(500);

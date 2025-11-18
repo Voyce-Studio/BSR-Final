@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from '../App';
 
 const Home = React.lazy(() => import('../pages/Home.jsx'));
@@ -10,6 +10,8 @@ const Mixes = React.lazy(() => import('../pages/Mixes.jsx'));
 const Submissions = React.lazy(() => import('../pages/Submissions.jsx'));
 const SubmissionsSuccess = React.lazy(() => import('../pages/SubmissionsSuccess.jsx'));
 const Catalogue = React.lazy(() => import('../pages/Catalogue.jsx'));
+const VisualDiary = React.lazy(() => import('../pages/VisualDiary.jsx'));
+const SitemapPage = React.lazy(() => import('../pages/Sitemap.jsx'));
 const About = React.lazy(() => import('../pages/About.jsx'));
 const Contact = React.lazy(() => import('../pages/Contact.jsx'));
 const PressKits = React.lazy(() => import('../pages/PressKits.jsx'));
@@ -32,6 +34,8 @@ export const router = createBrowserRouter([
       { path: 'submissions', element: <Submissions /> },
       { path: 'submissions/success', element: <SubmissionsSuccess /> },
       { path: 'catalogue', element: <Catalogue /> },
+      { path: 'visual-diary', element: <VisualDiary /> },
+      { path: 'sitemap', element: <SitemapPage /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'press-kits', element: <PressKits /> },
@@ -39,7 +43,8 @@ export const router = createBrowserRouter([
       { path: 'newsletter', element: <Newsletter /> },
       { path: 'legal/privacy', element: <LegalPrivacy /> },
       { path: 'legal/terms', element: <LegalTerms /> },
-      { path: '*', element: <NotFound /> }
+      { path: '404', element: <NotFound /> },
+      { path: '*', element: <Navigate to="/404" replace /> }
     ]
   }
 ]);

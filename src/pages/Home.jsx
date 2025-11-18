@@ -5,48 +5,31 @@ import SEO from '../components/meta/SEO';
 import CelestialHero from '../components/sections/CelestialHero';
 import galleryOne from '../assets/images/arty-backgrounds/BSR 1.png';
 import galleryTwo from '../assets/images/arty-backgrounds/BSR 2.png';
-const focusArtists = [
-  {
-    name: 'Miss Bliss',
-    accent: 'from-[#fbd3ff]/40 via-[#ff8ef3]/30 to-transparent',
-    gradient: 'rgba(255,142,243,0.4)',
-    track: 'Te Quero',
-    genre: 'Melodic Techno',
-    rosterNote: 'Residency lead. Flowering pads and velvet percussion.',
-    portrait: '/orbit/miss-bliss.png'
-  },
-  {
-    name: 'Miss Space',
-    accent: 'from-[#b1f8ff]/40 via-[#5cb8ff]/30 to-transparent',
-    gradient: 'rgba(92,184,255,0.35)',
-    track: 'Drowning in the Dark',
-    genre: 'Melodic Techno',
-    rosterNote: 'Chrome tides, modular sequences, celestial bass.',
-    portrait: '/orbit/miss-space.jpg'
-  }
-];
+import { artistList } from '../utils/constants';
 
 const discography = [
   {
-    catalog: 'BSR012',
-    title: 'Velvet Bloom',
+    catalog: 'BSR001',
+    title: 'Te Quiero',
     artist: 'Miss Bliss',
     releaseDate: 'Dec 12, 2024 · tentative',
     artwork: '/artwork/miss-bliss/BSR001 - Te Quero - Miss Bliss - Promotional Artwork.png',
-    description: 'Warm vocal layers and velvet percussion. The only drop locking in week one.',
-    genre: 'Blooming House',
-    vibe: 'Velvet Bloom',
+    description:
+      '“Te Quiero” is Miss Bliss’s love letter to the dance floor—sensual, cinematic, and hypnotic. It channels her story-driven melodic techno across warm, seductive percussion lines.',
+    genre: 'Melodic Techno',
+    vibe: 'Cinematic Pulse',
     url: 'https://open.spotify.com/track/0placeholder'
   },
   {
-    catalog: 'BSR013',
-    title: 'Chrome Drift',
+    catalog: 'BSR002',
+    title: 'Drowning in the Dark',
     artist: 'Miss Space',
     releaseDate: 'Dec 19, 2024 · tentative',
     artwork: '/artwork/miss-space/BSR002 - Drowning in the Dark - Miss Space - Promotional Artwork.png',
-    description: 'Chrome tide percussion and midnight pads closing the year in grayscale smoke.',
-    genre: 'Textured Techno',
-    vibe: 'Chrome Tide',
+    description:
+      '“Drowning in the Dark” scores inner transformation—descending into shadow only to surface anew. Miss Space sculpts modular pulses into a portal for rebirth.',
+    genre: 'Melodic Techno',
+    vibe: 'Portal Current',
     url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   }
 ];
@@ -59,10 +42,18 @@ const galleryShots = [
 ];
 
 export default function Home() {
+  const roster = React.useMemo(
+    () => ({
+      active: artistList.filter((artist) => artist.status === 'Resident'),
+      incoming: artistList.filter((artist) => artist.status !== 'Resident')
+    }),
+    []
+  );
+
   return (
     <>
         <SEO
-          title="Bliss Sound Records — Blooming House & Textured Techno"
+          title="Bliss Sound Records — Resident orbit & melodic techno drops"
           description="Experience the full-height bliss strip, animated gradients, and current Miss Bliss + Miss Space transmissions with contact & submissions anchors."
           keywords={['Bliss Sound Records', 'textured techno', 'Miss Bliss', 'Miss Space', 'melodic techno label']}
           structuredData={[
@@ -95,59 +86,73 @@ export default function Home() {
               Our growing artist roster bends melodic techno into bright, emotional curves—Miss Bliss, Miss Space, and new residents landing soon.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2" role="list">
-            {focusArtists.map((artist, index) => (
-              <motion.article
-                key={artist.name}
-                role="listitem"
-                className="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/5 p-8 shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -10, rotate: index % 2 === 0 ? -0.35 : 0.35 }}
-                  transition={{ duration: 0.9, delay: index * 0.08, ease: [0.65, 0.05, 0.36, 1] }}
-                viewport={{ once: true, amount: 0.4 }}
-              >
-                <motion.div
-                  className="absolute inset-0"
-                  style={{
-                      background: `radial-gradient(circle at 30% 20%, ${artist.gradient}, transparent 70%)`
-                    }}
-                    animate={{ opacity: [0.2, 0.55, 0.3] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  />
-                  <div
-                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${artist.accent} opacity-40`}
-                    style={{ mixBlendMode: 'screen' }}
-                  />
-                  <div className="relative flex h-full flex-col justify-between gap-6">
-                    <div className="relative h-48 overflow-hidden rounded-[28px] border border-white/20 bg-black/50">
-                      {artist.portrait ? (
-                        <img
-                          src={artist.portrait}
-                          alt={`${artist.name} orbit portrait`}
-                          className="h-full w-full object-cover object-center"
-                          loading="lazy"
+          <div className="space-y-10">
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-end justify-between gap-4 text-xs uppercase tracking-[0.4em] text-white/60">
+                <p>Active residents</p>
+                <Link to="/artists" className="text-white hover:underline">
+                  Resident index
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-6">
+                {roster.active.map((artist) => {
+                  const portrait = artist.orbitPortrait || artist.image;
+                  return (
+                    <motion.div key={artist.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                      <Link
+                        to={`/artists?focus=${artist.slug}`}
+                        className="group relative flex flex-col items-center gap-3"
+                        aria-label={`Open ${artist.name} profile`}
+                      >
+                        <span
+                          className="absolute inset-0 translate-y-4 scale-110 rounded-full blur-3xl opacity-60 transition group-hover:opacity-90"
+                          style={{ background: artist.palette.glow }}
                         />
-                      ) : (
-                        <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.35em] text-white/50">
-                          Portrait pending
+                        <span className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-white/25 bg-white/5 shadow-[0_15px_35px_rgba(0,0,0,0.4)] transition group-hover:border-white">
+                          {portrait ? (
+                            <img src={portrait} alt={`${artist.name} orbit portrait`} className="h-full w-full object-cover" />
+                          ) : (
+                            <span className="text-xs uppercase tracking-[0.3em] text-white/60">{artist.name}</span>
+                          )}
+                        </span>
+                        <div className="text-center">
+                          <p className="text-sm font-semibold tracking-[0.3em]">{artist.name}</p>
+                          <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/60">Resident</p>
                         </div>
-                      )}
-                    </div>
-                    <div className="space-y-3">
-                      <p className="text-xs uppercase tracking-[0.5em] text-white/70">BSR orbit</p>
-                      <h3 className="text-3xl font-light tracking-tight">{artist.name}</h3>
-                    </div>
-                    <p className="text-sm text-white/75">{artist.rosterNote}</p>
-                    <div className="flex flex-wrap items-center justify-between gap-3 text-[0.65rem] uppercase tracking-[0.4em] text-white/70">
-                      <span>{artist.track}</span>
-                      <span>{artist.genre}</span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/60">Incoming orbit</p>
+              <div className="flex flex-wrap gap-4">
+                {roster.incoming.map((artist) => {
+                  const portrait = artist.orbitPortrait || artist.image;
+                  return (
+                    <motion.div
+                      key={artist.slug}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      className="flex w-36 flex-col items-center gap-2 rounded-[28px] border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xl"
+                    >
+                      <div className="h-20 w-20 overflow-hidden rounded-3xl border border-white/10 bg-black/30">
+                        {portrait ? (
+                          <img src={portrait} alt={`${artist.name} orbit portrait`} className="h-full w-full object-cover" />
+                        ) : (
+                          <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.3em] text-white/50">Soon</div>
+                        )}
+                      </div>
+                      <p className="text-sm font-semibold tracking-[0.3em]">{artist.name}</p>
+                      <p className="text-[0.55rem] uppercase tracking-[0.4em] text-white/50">{artist.status}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-          <p className="text-xs uppercase tracking-[0.5em] text-white/60">New textures uploading soon</p>
         </section>
         <section className="relative overflow-hidden border-y border-white/10">
           <div className="absolute inset-0 aurora-gradient opacity-40" />
@@ -217,6 +222,9 @@ export default function Home() {
               We provide BSR&apos;s logo, brand kit, and roster press packs to aligned organizers. Scroll through the capsules—each card lifts with a gentle parallax as you hover.
             </p>
           </div>
+          <Link to="/visual-diary" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.4em] text-white/70 hover:text-white">
+            View the full toolkit →
+          </Link>
           <div className="grid auto-rows-[220px] gap-4 md:grid-cols-3">
             {galleryShots.map((shot, index) => (
               <motion.figure

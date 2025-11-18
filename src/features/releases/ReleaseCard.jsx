@@ -3,7 +3,7 @@ import ImageSurface from '../../components/primitives/ImageSurface';
 
 export default function ReleaseCard({ track }) {
   return (
-    <div className="flex flex-col gap-6 rounded-[32px] border border-white/10 bg-black/40 p-6 text-white shadow-[0_35px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl lg:flex-row lg:items-start">
+    <div className="flex flex-col gap-6 rounded-[36px] border border-white/15 bg-white/5 p-6 text-white shadow-[0_35px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl lg:flex-row lg:items-start">
       <div className="w-full max-w-xs">
         <ImageSurface
           src={track.artwork}
@@ -24,10 +24,10 @@ export default function ReleaseCard({ track }) {
           {track.vibe && <span className="rounded-full border border-white/20 px-3 py-1">{track.vibe}</span>}
           {track.length && <span className="rounded-full border border-white/20 px-3 py-1">{track.length}</span>}
         </div>
-        <div className="flex flex-wrap gap-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/60">
+        <div className="flex flex-wrap gap-2 text-[0.55rem] uppercase tracking-[0.35em] text-white/70">
           {['Apple Music', 'Spotify', 'YouTube'].map((platform) => (
-            <span key={`${track.id}-${platform}`} className="rounded-full border border-white/25 px-3 py-1">
-              {platform}: Coming Soon
+            <span key={`${track.id}-${platform}`} className="rounded-full border border-white/30 px-3 py-1 bg-white/5">
+              {platform}: Coming soon
             </span>
           ))}
         </div>

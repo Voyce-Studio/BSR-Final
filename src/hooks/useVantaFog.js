@@ -22,7 +22,9 @@ export default function useVantaFog(options = {}, interactions = {}) {
   const {
     respondToScroll = false,
     scrollRange = [0.85, 1.05],
-    centerBias = 1
+    centerBias = 1,
+    oscillateSpeed = false,
+    speedRange = [0.95, 1.35]
   } = interactions;
 
   useEffect(() => {
@@ -64,6 +66,25 @@ export default function useVantaFog(options = {}, interactions = {}) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [respondToScroll, scrollRange, centerBias]);
+
+  useEffect(() => {
+    if (!oscillateSpeed || !vantaRef.current) return undefined;
+    const [minSpeed, maxSpeed] = speedRange;
+    const mid = (minSpeed + maxSpeed) / 2;
+    const amplitude = (maxSpeed - minSpeed) / 2;
+
+    const handleSpeed = () => {
+      if (!vantaRef.current) return;
+      const base = window.innerHeight || 1;
+      const wave = Math.sin((window.scrollY || 0) / base);
+      const speed = mid + wave * amplitude;
+      vantaRef.current.setOptions({ speed });
+    };
+
+    handleSpeed();
+    window.addEventListener('scroll', handleSpeed, { passive: true });
+    return () => window.removeEventListener('scroll', handleSpeed);
+  }, [oscillateSpeed, speedRange]);
 
   return elementRef;
 }

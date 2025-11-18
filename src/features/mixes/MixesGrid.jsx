@@ -64,6 +64,7 @@ export default function MixesGrid({ mixes }) {
   }
 
   const activeMix = mixes[Math.min(activeIndex, mixes.length - 1)];
+  const hasEmbed = Boolean(activeMix?.url);
 
   const cycle = (direction) => {
     setActiveIndex((prev) => {
@@ -75,16 +76,24 @@ export default function MixesGrid({ mixes }) {
   };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[320px,minmax(0,1fr)]">
-      <div className="space-y-3 max-h-[520px] overflow-y-auto pr-2" role="tablist" aria-label="Mix playlist">
-        {mixes.map((mix, index) => (
-          <MixCard
-            key={mix.title}
-            mix={mix}
-            isActive={index === activeIndex}
-            onSelect={() => setActiveIndex(index)}
-          />
-        ))}
+    <div className="space-y-6">
+      <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-white/60">
+        <span>Mix cards — swipe horizontally</span>
+        <span>
+          {activeIndex + 1}/{mixes.length}
+        </span>
+      </div>
+      <div className="overflow-x-auto pb-4" role="tablist" aria-label="Mix playlist">
+        <div className="flex min-w-max gap-4">
+          {mixes.map((mix, index) => (
+            <MixCard
+              key={mix.title}
+              mix={mix}
+              isActive={index === activeIndex}
+              onSelect={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
       </div>
       <div className="space-y-4 rounded-[32px] border border-white/10 bg-black/60 p-6 backdrop-blur-xl">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -112,12 +121,22 @@ export default function MixesGrid({ mixes }) {
             </button>
           </div>
         </div>
-        <MixEmbed url={activeMix.url} title={activeMix.title} />
+        {hasEmbed ? (
+          <MixEmbed url={activeMix.url} title={activeMix.title} />
+        ) : (
+          <div className="flex min-h-[240px] items-center justify-center rounded-[32px] border border-white/10 bg-black/30 text-center text-sm uppercase tracking-[0.35em] text-white/60">
+            Mix coming soon
+          </div>
+        )}
         <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.3em] text-white/60">
-          <a href={activeMix.url} target="_blank" rel="noreferrer" className="underline">
-            Open on {activeMix.platform}
-          </a>
-          {activeMix.length && <span>{activeMix.length}</span>}
+          {hasEmbed ? (
+            <a href={activeMix.url} target="_blank" rel="noreferrer" className="underline">
+              Open on {activeMix.platform}
+            </a>
+          ) : (
+            <span>Streaming links coming soon</span>
+          )}
+          {activeMix.length && hasEmbed && <span>{activeMix.length}</span>}
           {activeMix.mood && <span>{activeMix.mood}</span>}
         </div>
       </div>
