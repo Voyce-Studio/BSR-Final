@@ -2,11 +2,7 @@ import React from 'react';
 import SubmissionForm from '../features/submissions/SubmissionForm';
 import SEO from '../components/meta/SEO';
 
-const expectations = [
-  { title: 'Curation focus', body: 'Melodic and textured techno, leftfield house, percussive Afro-electronic, ambient club scores.' },
-  { title: 'What to include', body: 'Private links with download enabled, 1–2 sentences about the story, and any collaborators we should credit.' },
-  { title: 'Follow-up', body: 'We review everything. Expect a status email within a week—faster if we feel an immediate connection.' }
-];
+
 
 export default function Submissions() {
   return (
@@ -35,7 +31,7 @@ export default function Submissions() {
             <p className="text-xs uppercase tracking-[0.4em] text-white/60">Submissions</p>
             <h1 className="text-4xl font-semibold">Demo intake</h1>
             <p className="text-base text-white/70">
-              A polished, secure intake form for artists exploring velvet, percussive textures. Complete the steps below to route your music directly to the Bliss Sound A&R desk.
+              We are always looking for new sounds that resonate with the Bliss Sound ethos. If you produce melodic techno, deep house, or textured electronic music, we want to hear from you. Use the form below to send us your best work.
             </p>
           </div>
           <SubmissionForm />
@@ -47,7 +43,11 @@ export default function Submissions() {
             .
           </div>
           <div className="grid gap-4 md:grid-cols-3">
-            {expectations.map((item) => (
+            {[
+              { title: 'Curation focus', body: 'We look for melodic and textured techno, leftfield house, and percussive Afro-electronic sounds that tell a story.' },
+              { title: 'What to include', body: 'Please provide private streaming links (SoundCloud/Dropbox) with download options. Include a brief bio and any relevant collaborator credits.' },
+              { title: 'Follow-up', body: 'We listen to every submission. While we try to respond to everyone, please allow up to two weeks for a response due to the volume of demos we receive.' }
+            ].map((item) => (
               <article key={item.title} className="rounded-3xl border border-white/15 bg-black/40 p-5 text-sm backdrop-blur-xl">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60">{item.title}</p>
                 <p className="mt-2 text-white/70">{item.body}</p>

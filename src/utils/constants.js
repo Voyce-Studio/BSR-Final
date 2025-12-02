@@ -24,8 +24,6 @@ export const featuredReleases = [
   { id: 'release-3', title: 'High Tide Choir', artists: 'MOONLOX', date: 'Jan 2025', formats: ['Digital'], cover: '/assets/images/release-3.webp' }
 ];
 
-const placeholderSummary = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus vitae elit sodales rutrum.';
-
 const MISS_BLISS_MIX_LINK = 'https://youtu.be/YmFKM8oeOW8?si=26w3tqNW0IG92nAg';
 
 export const latestDrops = [
@@ -64,7 +62,7 @@ export const artistList = [
     slug: 'miss-bliss',
     name: 'Miss Bliss',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'Te Quiero · Dec 12',
     status: 'Resident',
     spotify: 'https://open.spotify.com/track/0placeholder',
@@ -78,7 +76,7 @@ export const artistList = [
     slug: 'miss-space',
     name: 'Miss Space',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'Drowning in the Dark · Dec 19',
     status: 'Resident',
     spotify: 'https://open.spotify.com/track/1placeholder',
@@ -92,7 +90,7 @@ export const artistList = [
     slug: 'tyss',
     name: 'TYSS',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'Debut tape · production lock',
     status: 'Incoming',
     spotify: null,
@@ -106,7 +104,7 @@ export const artistList = [
     slug: 'yulia-leya',
     name: 'Yulia Leya',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'Studio residency',
     status: 'Incoming',
     spotify: null,
@@ -120,7 +118,7 @@ export const artistList = [
     slug: 'kama-way',
     name: 'Kama Way',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'First EP · lining up',
     status: 'Incoming',
     spotify: null,
@@ -134,7 +132,7 @@ export const artistList = [
     slug: 'daria-bluur',
     name: 'Daria Bluur',
     style: 'Melodic Techno',
-    summary: placeholderSummary,
+    summary: '',
     focus: 'Live AV sketches',
     status: 'Incoming',
     spotify: null,
@@ -174,17 +172,42 @@ const mixArtworks = [
   '/artwork/miss-space/BSR002 - Drowning in the Dark - Miss Space - Promotional Artwork.png'
 ];
 
+const publishedMixes = [
+  {
+    title: 'ON THE GO #01',
+    url: MISS_BLISS_MIX_LINK
+  },
+  {
+    title: 'ON THE GO #02',
+    url: 'https://www.youtube.com/watch?v=6ZvX7kaba2I&list=PLFm_MveS8pgLCiFoJ0E0z4hYyVJVA2EMf&index=3'
+  },
+  {
+    title: 'ON THE GO #03',
+    url: 'https://www.youtube.com/watch?v=doG14OTwraE&list=PLFm_MveS8pgLCiFoJ0E0z4hYyVJVA2EMf&index=4'
+  },
+  {
+    title: 'ON THE GO #04',
+    url: 'https://www.youtube.com/watch?v=kQYBjW1Egcc&list=PLFm_MveS8pgLCiFoJ0E0z4hYyVJVA2EMf'
+  },
+  {
+    title: 'ON THE GO #05',
+    url: 'https://www.youtube.com/watch?v=qffv3rFj1LM&list=PLFm_MveS8pgLCiFoJ0E0z4hYyVJVA2EMf&index=2'
+  }
+];
+
 export const mixList = Array.from({ length: 24 }, (_, index) => {
   const sequence = String(index + 1).padStart(2, '0');
-  const isPublished = index === 0;
+  const publishedMix = publishedMixes[index];
+  const isPublished = !!publishedMix;
+
   return {
-    title: `Miss Bliss Mix ${sequence}`,
+    title: isPublished ? publishedMix.title : `ON THE GO #${sequence}`,
     curator: 'Miss Bliss',
     artist: 'Miss Bliss',
     genres: [],
     vibes: [],
-    description: placeholderSummary,
-    url: isPublished ? MISS_BLISS_MIX_LINK : '',
+    description: '',
+    url: isPublished ? publishedMix.url : '',
     platform: isPublished ? 'YouTube' : 'Coming soon',
     artwork: isPublished ? mixArtworks[index % mixArtworks.length] : null,
     comingSoon: !isPublished
@@ -201,9 +224,9 @@ export const catalogueEntries = [
     featuring: '—',
     duration: '6:47',
     links: {
-      spotify: 'https://open.spotify.com/track/0placeholder',
-      youtube: 'https://youtube.com/watch?v=0placeholder',
-      apple: 'https://music.apple.com/us/album/0placeholder'
+      spotify: '#',
+      youtube: '#',
+      apple: '#'
     }
   },
   {
@@ -213,9 +236,9 @@ export const catalogueEntries = [
     featuring: '—',
     duration: '7:05',
     links: {
-      spotify: 'https://open.spotify.com/track/1placeholder',
-      youtube: 'https://youtube.com/watch?v=1placeholder',
-      apple: 'https://music.apple.com/us/album/1placeholder'
+      spotify: '#',
+      youtube: '#',
+      apple: '#'
     }
   },
   {
@@ -225,9 +248,9 @@ export const catalogueEntries = [
     featuring: 'Nova Aurelia',
     duration: '5:58',
     links: {
-      spotify: 'https://open.spotify.com/track/2placeholder',
-      youtube: 'https://youtube.com/watch?v=2placeholder',
-      apple: 'https://music.apple.com/us/album/2placeholder'
+      spotify: '#',
+      youtube: '#',
+      apple: '#'
     }
   },
   {
@@ -237,9 +260,9 @@ export const catalogueEntries = [
     featuring: '—',
     duration: '6:22',
     links: {
-      spotify: 'https://open.spotify.com/track/3placeholder',
-      youtube: 'https://youtube.com/watch?v=3placeholder',
-      apple: 'https://music.apple.com/us/album/3placeholder'
+      spotify: '#',
+      youtube: '#',
+      apple: '#'
     }
   }
 ];

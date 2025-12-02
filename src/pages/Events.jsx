@@ -18,7 +18,7 @@ export default function Events() {
           <p className="text-xs uppercase tracking-[0.4em] text-white/70">Happenings</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Events &amp; activations</h1>
           <p className="max-w-3xl text-sm text-white/70">
-            The fog field hosts our seaside rituals, Artist Circle demo gatherings, and label takeovers. Every page shares the same VANTA motion so each announcement feels continuous.
+            Experience the pulse of Bliss Sound Records. From intimate seaside rituals to warehouse takeovers, our events are designed to immerse you in the soundscape of melodic techno and deep house. Join us as we curate nights of connection and rhythm.
           </p>
         </div>
       </section>
